@@ -22,8 +22,9 @@ Clone a copy of the git project by using Eclipse > 'Import' > 'Git' > 'Git Proje
 
 
 # Troubleshooting
-- I'm getting 'Unable to update maven project - Unsupported IClasspathEntry kind=4'
--- Right click on the project, select maven - disable maven nature
--- Right click -> Run as -> Maven 'eclipse:clean'
--- Right click -> Configure -> Enable Maven nature
+
+I'm getting 'Unable to update maven project - Unsupported IClasspathEntry kind=4'
+- Right click on the project, select maven - disable maven nature
+- Right click -> Run as -> Maven 'eclipse:clean'
+- Right click -> Configure -> Enable Maven nature
 
