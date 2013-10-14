@@ -39,9 +39,6 @@
         <ref bean="Training-CollegeApplicationPage-Lab3"/>
       </list>
     </property>
-    <property name="theme">
-      <bean parent="Uif-KradTheme"/>
-    </property>
     <property name="additionalCssFiles">
       <list>
         <value>css/application.css</value>
@@ -57,7 +54,7 @@
   <!-- Alternate version of this view, only changing the theme -->
   <bean id="Training-CollegeApplicationView_KNS-Lab3" parent="Training-CollegeApplicationView">
     <property name="theme">
-      <bean parent="Uif-ClassicKnsTheme"/>
+    <bean parent="GlobalTheme"/>
     </property>
   </bean>
 

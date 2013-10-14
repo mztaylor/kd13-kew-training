@@ -94,7 +94,7 @@
     <property name="kualiModuleService" ref="kualiModuleService"/>
   </bean>
 
-  <bean id="kualiModuleService" class="org.kuali.rice.krad.config.GlobalResourceLoaderServiceFactoryBean">
+  <bean id="kualiModuleService" class="org.kuali.rice.core.framework.resourceloader.GlobalResourceLoaderServiceFactoryBean">
     <property name="serviceName" value="kualiModuleService"/>
   </bean>
 
@@ -108,7 +108,6 @@
       <list>
         <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
         <bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
-        <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
         <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
         <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
         <bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter"/>

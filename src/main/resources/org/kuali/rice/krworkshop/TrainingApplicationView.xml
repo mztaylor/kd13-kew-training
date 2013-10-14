@@ -38,9 +38,6 @@
         <ref bean="Training-CollegeApplicationPage"/>
       </list>
     </property>
-    <property name="theme">
-      <bean parent="Uif-KradTheme"/>
-    </property>
     <property name="additionalScriptFiles">
       <list>
         <value>js/application.js</value>
@@ -56,7 +53,7 @@
   <!-- Alternate version of this view, only changing the theme -->
   <bean id="Training-CollegeApplicationView_KNS" parent="Training-CollegeApplicationView">
     <property name="theme">
-      <bean parent="Uif-ClassicKnsTheme"/>
+     <bean parent="GlobalTheme"/>
     </property>
   </bean>
 

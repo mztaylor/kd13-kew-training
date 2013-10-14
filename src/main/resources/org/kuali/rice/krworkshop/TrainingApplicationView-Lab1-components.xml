@@ -40,9 +40,6 @@
       </list>
     </property>
     <!-- Lab 1 - Step 3: Update theme from Uif-ClassicKnsTheme to Uif-KradTheme -->
-    <property name="theme">
-      <bean parent="Uif-ClassicKnsTheme"/>
-    </property>
     <!-- Lab 1 - Step 3: Uncomment additionalCssFiles -->
     <!-- property name="additionalCssFiles">
       <list>
@@ -53,9 +50,6 @@
   
   <!-- Alternate version of this view, only changing the theme -->
   <bean id="Training-CollegeApplicationView_KNS-Lab1" parent="Training-CollegeApplicationView-Lab1">
-    <property name="theme">
-      <bean parent="Uif-ClassicKnsTheme"/>
-    </property>
   </bean>
 
   <!-- College Application page -->
