@@ -65,7 +65,7 @@
     <mysql.jdbc.artifactId>mysql-connector-java</mysql.jdbc.artifactId>
 
     <rice.groupId>org.kuali.rice</rice.groupId>
-    <rice.version>2.3.0</rice.version>
+    <rice.version>2.3.2</rice.version>
     <servlet-api.version>2.5</servlet-api.version>
 
     <!--plugin versions -->
