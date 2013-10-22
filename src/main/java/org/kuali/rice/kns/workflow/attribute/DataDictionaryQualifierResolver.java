@@ -15,6 +15,12 @@
  */
 package org.kuali.rice.kns.workflow.attribute;
 
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.kuali.rice.kew.engine.RouteContext;
 import org.kuali.rice.kns.service.KNSServiceLocator;
 import org.kuali.rice.krad.datadictionary.DocumentEntry;
@@ -23,17 +29,12 @@ import org.kuali.rice.krad.datadictionary.WorkflowAttributes;
 import org.kuali.rice.krad.document.Document;
 import org.kuali.rice.krad.service.KRADServiceLocatorWeb;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * QualifierResolver which uses Data Dictionary defined workflow attributes to gather a collection
  * of qualifiers to use to determine the responsibility for a document at a given workflow route node.
- * 
+ *
  * WorkflowAttributes can be defined in the data dictionary like so (this has been abbreviated):
- * 
+ *
  * <!-- Exported Workflow Attributes -->
  *   <bean id="DisbursementVoucherDocument-workflowAttributes" parent="DisbursementVoucherDocument-workflowAttributes-parentBean"/>
  *
@@ -51,7 +52,7 @@ import java.util.Map;
  *           </map>
  *       </property>
  *   </bean>
- * 
+ *
  *   <bean id="DisbursementVoucherDocument-RoutingType-PaymentMethod" class="org.kuali.rice.krad.datadictionary.RoutingTypeDefinition">
  *       <property name="routingAttributes">
  *           <list>
@@ -71,37 +72,59 @@ import java.util.Map;
  *               </bean>
  *           </list>
  *       </property>
- *   </bean> 
- * 
+ *   </bean>
+ *
  * At the PaymentMethod node of the document, the DisbursementVoucherDocument-RoutingType-PaymentMethod RoutingTypeDefinition will be
  * consulted; it will pull values from the document (in this case, document.disbVchrPaymentMethodCode) and populate those
  * into the role qualifier Map<String, String>, with the key being the qualificationAttributeName and the value being the value of the property
  * listed in the documentValuePathGroups in the document.
  */
 public class DataDictionaryQualifierResolver extends QualifierResolverBase {
-//    private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(DataDictionaryQualifierResolver.class);
-    
+    private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(DataDictionaryQualifierResolver.class);
+
 
     /**
      * Given the RouteContext, determines the document type of the document being routed and the current
      * route nodes; generates a List of qualifier Map<String, String>s based on the the contents of the document.
      * @see org.kuali.rice.kew.role.QualifierResolver#resolve(org.kuali.rice.kew.engine.RouteContext)
      */
-    public List<Map<String, String>> resolve(RouteContext context) {
+    @Override
+	public List<Map<String, String>> resolve(RouteContext context) {
         final String routeLevel = context.getNodeInstance().getName();
         final DocumentEntry documentEntry = getDocumentEntry(context);
         final RoutingTypeDefinition routingTypeDefinition = getWorkflowAttributeDefintion(documentEntry, routeLevel);
         final Document document = getDocument(context);
+
+        if ( LOG.isDebugEnabled() ) {
+        	LOG.debug( MessageFormat.format( "Extracting Workflow Attribute Sets for Doc #: {0} / Type: {1} / Node: {2}", getDocumentId(context), context.getDocument().getDocumentTypeName(), routeLevel ) ) ;
+        }
+
         List<Map<String, String>> qualifiers = null;
-        
+
         if (document != null && routingTypeDefinition != null) {
             qualifiers = KNSServiceLocator.getWorkflowAttributePropertyResolutionService().resolveRoutingTypeQualifiers(document, routingTypeDefinition);
         } else {
+        	LOG.debug( "No Routing Type Definition found.  Only adding basic qualifiers.");
             qualifiers = new ArrayList<Map<String, String>>();
             Map<String, String> basicQualifier = new HashMap<String, String>();
             qualifiers.add(basicQualifier);
         }
         decorateWithCommonQualifiers(qualifiers, document, documentEntry, routeLevel);
+        if ( LOG.isDebugEnabled() ) {
+        	if ( qualifiers == null ) {
+        		LOG.debug( "null qualifier set being returned");
+        	} else {
+        		LOG.debug( "Returning " + qualifiers.size() + " sets of qualifiers.  Workflow will resolve each one independently.");
+        		int i = 0;
+        		for ( Map<String,String> qualifierSet : qualifiers ) {
+        			i++;
+        			LOG.debug( "*** Qualifier Set " + i);
+        			for ( Map.Entry<String, String> entry : qualifierSet.entrySet() ) {
+        				LOG.debug( String.format("          %20s : %s", entry.getKey(), entry.getValue()));
+        			}
+        		}
+        	}
+        }
         return qualifiers;
     }
 
@@ -130,7 +153,7 @@ public class DataDictionaryQualifierResolver extends QualifierResolverBase {
        if (routingTypeMap.containsKey(routeLevelName)) return routingTypeMap.get(routeLevelName);
        return null;
     }
-    
+
     /**
      * Add common qualifiers to every Map<String, String> in the given List of Map<String, String>
      * @param qualifiers a List of Map<String, String>s to add common qualifiers to
@@ -143,7 +166,7 @@ public class DataDictionaryQualifierResolver extends QualifierResolverBase {
             addCommonQualifiersToMap(qualifier, document, documentEntry, routeLevel);
         }
     }
-    
+
     /**
      * Adds common qualifiers to a given Map<String, String>
      * @param qualifier an Map<String, String> to add common qualifiers to
