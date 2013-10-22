@@ -58,6 +58,7 @@ import org.kuali.rice.krad.util.ObjectUtils;
  * @author Kuali Rice Team (rice.collab@kuali.org)
  */
 public class WorkflowAttributePropertyResolutionServiceImpl implements WorkflowAttributePropertyResolutionService {
+	private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(WorkflowAttributePropertyResolutionServiceImpl.class);
 
     private PersistenceStructureService persistenceStructureService;
     private BusinessObjectMetaDataService businessObjectMetaDataService;
@@ -118,6 +119,9 @@ public class WorkflowAttributePropertyResolutionServiceImpl implements WorkflowA
         List<Map<String, String>> qualifiers = new ArrayList<Map<String, String>>();
         final Collection collectionByPath = getCollectionByPath(businessObject, collectionPath.getCollectionPath());
         if (!ObjectUtils.isNull(collectionByPath)) {
+        	if ( LOG.isDebugEnabled() ) {
+        		LOG.debug("Processing collection in document: " + collectionPath.getCollectionPath() );
+        	}
             if (collectionPath.getNestedCollection() != null) {
                 // we need to go through the collection...
                 for (Object collectionElement : collectionByPath) {
@@ -169,6 +173,9 @@ public class WorkflowAttributePropertyResolutionServiceImpl implements WorkflowA
      */
     protected void addPathValuesToQualifier(Object businessObject, List<String> paths, RoutingAttributeTracker routingAttributes, Map<String, String> qualifier) {
         if (ObjectUtils.isNotNull(paths)) {
+        	if ( LOG.isDebugEnabled() ) {
+        		LOG.debug("Resolving properties: " + paths + " Against object: " + businessObject );
+        	}
             for (String path : paths) {
                 // get the values for the paths of each element of the collection
                 final Object value = getPropertyByPath(businessObject, path.trim());
@@ -176,6 +183,9 @@ public class WorkflowAttributePropertyResolutionServiceImpl implements WorkflowA
                     qualifier.put(routingAttributes.getCurrentRoutingAttribute().getQualificationAttributeName(), value.toString());
                 }
                 routingAttributes.moveToNext();
+            }
+            if ( LOG.isDebugEnabled() ) {
+            	LOG.debug(" *** Qualifiers Extracted: " + qualifier);
             }
         }
     }
