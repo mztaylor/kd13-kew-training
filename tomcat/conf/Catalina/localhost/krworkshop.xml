@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/kr-dev" docBase="../../target/krworkshop-0.0.1-SNAPSHOT">
+     <Loader reloadable="true" className="org.apache.catalina.loader.VirtualWebappLoader"
+               virtualClasspath="
+				../../target/classes;
+				"
+               searchVirtualFirst="true"/>
+</Context>

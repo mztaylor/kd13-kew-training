@@ -59,4 +59,5 @@ in configuration files outside of the project.
   <param name="config.location">${alt.config.location}</param>
   <param name="version">krworkshop :: ${project.version} :: ${kuali.build.timestamp}</param>
 
+  <param name="log4j.settings.reloadInterval">1</param>
 </config>
