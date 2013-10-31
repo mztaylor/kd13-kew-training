@@ -25,4 +25,4 @@ INSERT INTO `KRIM_ROLE_T` (`ROLE_ID`,`OBJ_ID`,`VER_NBR`,`ROLE_NM`,`NMSPC_CD`,`DE
 VALUES ('KRATRNG10002',uuid(),1,'Application Approver','KRA-TRNG','Provides a final decision on the application','1','Y',NOW());
 
 INSERT INTO `KRIM_ROLE_T` (`ROLE_ID`,`OBJ_ID`,`VER_NBR`,`ROLE_NM`,`NMSPC_CD`,`DESC_TXT`,`KIM_TYP_ID`,`ACTV_IND`,`LAST_UPDT_DT`)
-VALUES ('KRATRNG10003',uuid(),1,'Review Committee Member','KRA-TRNG','Reviews applications and provides notes','1','Y',NOW());
+VALUES ('KRATRNG10003',uuid(),1,'Application Reviewer','KRA-TRNG','Reviews applications and provides notes','1','Y',NOW());
