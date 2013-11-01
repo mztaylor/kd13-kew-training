@@ -26,7 +26,7 @@ This file contains custom application specific portal content.
 <div class="body">
 
   <ul class="chan">
-      Code Labs:
+      KRAD Code Labs:
       <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/collegeapp?viewId=Training-CollegeApplicationView-Lab1&methodToCall=start" />Kuali University - Lab 1: Components and Containers</a></li>
       <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/collegeapp?viewId=Training-CollegeApplicationView-Lab2&methodToCall=start" />Kuali University - Lab 2: Validation </a></li>
       <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/collegeapp?viewId=Training-CollegeApplicationView-Lab3&methodToCall=start" />Kuali University - Lab 3: Actions and Custom Controllers</a></li>
@@ -37,6 +37,11 @@ This file contains custom application specific portal content.
 	  <br><br><br>
 	  Complete Page:
       <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/collegeapp?viewId=Training-CollegeApplicationView&methodToCall=start" />Kuali University - Apply Now!</a></li>
+  </ul>
+  
+    <ul class="chan">
+      Kew Code Labs:
+      <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/lookup?methodToCall=start&viewId=TrainingApplicationLookup" />Kuali University - Training Application Lookup</a></li>
   </ul>
 
 </div>
