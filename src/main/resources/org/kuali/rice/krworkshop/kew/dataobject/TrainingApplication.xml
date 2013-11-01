@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright 2005-2013 The Kuali Foundation
+
+    Licensed under the Educational Community License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.opensource.org/licenses/ecl2.php
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans         http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+  <bean id="TrainingApplication" parent="TrainingApplication-parentBean"/>
+  <bean id="TrainingApplication-parentBean" abstract="true" parent="DataObjectEntry">
+    <property name="dataObjectClass" value="org.kuali.rice.krworkshop.TrainingApplication"/>
+    <property name="objectLabel" value="Training Application"/>
+    <property name="attributes">
+      <list>
+        <ref bean="Application-id"/>
+        <ref bean="Application-term"/>
+        <ref bean="Application-college"/>
+        <ref bean="Application-campus"/>
+        <ref bean="Application-schoolColor"/>
+        <ref bean="Application-firstName"/>
+        <ref bean="Application-lastName"/>
+        <ref bean="Application-email"/>
+        <ref bean="Application-gender"/>
+      </list>
+    </property>
+    <property name="titleAttribute" value="id"/>
+    <property name="primaryKeys">
+      <list>
+        <value>id</value>
+      </list>
+    </property>
+  </bean>
+  <bean id="Application-id" parent="Application-id-parentBean"/>
+  <bean id="Application-id-parentBean" abstract="true" parent="AttributeReferenceDummy-genericSystemId">
+    <property name="name" value="id"/>
+    <property name="label" value="Application ID"/>
+    <property name="shortLabel" value="ID"/>
+    <property name="maxLength" value="14"/>
+    <property name="validCharactersConstraint">
+      <bean parent="NumericPatternConstraint"/>
+    </property>   
+    <property name="controlField">
+      <bean parent="Uif-HiddenControl"/>
+    </property>
+    <property name="summary" value="ID identifying the Application."/>
+    <property name="description" value="ID identifying the Application."/>
+  </bean>
+  <bean id="Application-term" parent="Application-term-parentBean"/>
+  <bean id="Application-term-parentBean" abstract="true" parent="AttributeDefinition">
+    <property name="name" value="term"/>
+    <property name="forceUppercase" value="false"/>
+    <property name="label" value="Application Title"/>
+    <property name="shortLabel" value="Title"/>
+    <property name="maxLength" value="100"/>
+    <property name="validCharactersConstraint">
+      <bean  parent="AnyCharacterPatternConstraint" p:allowWhitespace="true"/>
+    </property>
+     <property name="controlField">
+      <bean parent="Uif-TextControl" p:size="50"/>
+    </property>
+    <property name="required" value="true"/>
+    <property name="summary" value="Term which the applicant wishes to enroll."/>
+    <property name="description" value="Term which the applicant wishes to enroll."/>
+  </bean>
+  <bean id="Application-college" parent="Application-college-parentBean"/>
+  <bean id="Application-college-parentBean" abstract="true" parent="AttributeDefinition">
+    <property name="name" value="college"/>
+    <property name="label" value="College"/>
+    <property name="shortLabel" value="College"/>
+    <property name="summary" value="College applicant wishes to enroll at."/>
+    <property name="description" value="College applicant wishes to enroll at."/>
+    <property name="validCharactersConstraint">
+      <bean  parent="AnyCharacterPatternConstraint" p:allowWhitespace="true"/>
+    </property>
+     <property name="controlField">
+      <bean parent="Uif-TextControl" p:size="50"/>
+    </property>		 
+  </bean>
+  <bean id="Application-schoolColor" parent="Application-schoolColor-parentBean"/>
+  <bean id="Application-schoolColor-parentBean" abstract="true" parent="AttributeDefinition">
+    <property name="name" value="schoolColor"/>
+    <property name="label" value="schoolColor"/>
+    <property name="shortLabel" value="schoolColor"/>
+    <property name="maxLength" value="24"/>
+    <property name="validCharactersConstraint">
+      <bean  parent="AnyCharacterPatternConstraint" p:allowWhitespace="true"/>
+    </property>
+     <property name="controlField">
+      <bean parent="Uif-TextControl" p:size="50"/>
+    </property>
+    <property name="summary" value="School color of the College."/>
+    <property name="description" value="School color of the College."/>
+  </bean>
+  <bean id="Application-campus" parent="Application-campus-parentBean"/>
+  <bean id="Application-campus-parentBean" abstract="true" parent="AttributeDefinition">
+    <property name="name" value="campus"/>
+    <property name="label" value="campus"/>
+    <property name="shortLabel" value="campus"/>
+    <property name="maxLength" value="100"/>
+    <property name="validCharactersConstraint">
+      <bean  parent="AnyCharacterPatternConstraint" p:allowWhitespace="true"/>
+    </property>
+     <property name="controlField">
+      <bean parent="Uif-TextControl" p:size="50"/>
+    </property>
+
+    <property name="summary" value="Campus specific to the College."/>
+    <property name="description" value="Campus specific to the College."/>
+  </bean>
+  <bean id="Application-firstName" parent="Application-firstName-parentBean"/>
+  <bean id="Application-firstName-parentBean" abstract="true" parent="AttributeDefinition">
+    <property name="name" value="firstName"/>
+    <property name="forceUppercase" value="false"/>
+    <property name="label" value="first name"/>
+    <property name="shortLabel" value="first name"/>
+    <property name="maxLength" value="50"/>
+    <property name="required" value="false"/>
+    <property name="validCharactersConstraint">
+      <bean  parent="AnyCharacterPatternConstraint" p:allowWhitespace="true"/>
+    </property>
+     <property name="controlField">
+      <bean parent="Uif-TextControl" p:size="50"/>
+    </property>
+    <property name="summary" value="First name of the Applicant."/>
+    <property name="description" value="First name of the Applicant."/>
+  </bean>
+  <bean id="Application-lastName" parent="Application-lastName-parentBean"/>
+  <bean id="Application-lastName-parentBean" abstract="true" parent="AttributeDefinition">
+    <property name="name" value="lastName"/>
+    <property name="forceUppercase" value="false"/>
+    <property name="label" value="last name"/>
+    <property name="shortLabel" value="last name"/>
+    <property name="maxLength" value="50"/>
+    <property name="required" value="false"/>
+    <property name="validCharactersConstraint">
+      <bean  parent="AnyCharacterPatternConstraint" p:allowWhitespace="true"/>
+    </property>
+     <property name="controlField">
+      <bean parent="Uif-TextControl" p:size="50"/>
+    </property>
+    <property name="summary" value="Last name of the Applicant."/>
+    <property name="description" value="Last name of the Applicant."/>
+  </bean>
+    <bean id="Application-email" parent="Application-email-parentBean"/>
+  <bean id="Application-email-parentBean" abstract="true" parent="AttributeDefinition">
+    <property name="name" value="email"/>
+    <property name="forceUppercase" value="false"/>
+    <property name="label" value="email"/>
+    <property name="shortLabel" value="email"/>
+    <property name="maxLength" value="50"/>
+    <property name="required" value="false"/>
+    <property name="validCharactersConstraint">
+      <bean  parent="AnyCharacterPatternConstraint" p:allowWhitespace="true"/>
+    </property>
+     <property name="controlField">
+      <bean parent="Uif-TextControl" p:size="50"/>
+    </property>
+    <property name="summary" value="Email address of the Applicant."/>
+    <property name="description" value="Email address of the Applicant."/>
+  </bean>
+    <bean id="Application-gender" parent="Application-gender-parentBean"/>
+  <bean id="Application-gender-parentBean" abstract="true" parent="AttributeDefinition">
+    <property name="name" value="gender"/>
+    <property name="forceUppercase" value="false"/>
+    <property name="label" value="gender"/>
+    <property name="shortLabel" value="gender"/>
+    <property name="maxLength" value="50"/>
+    <property name="required" value="false"/>
+    <property name="validCharactersConstraint">
+      <bean  parent="AnyCharacterPatternConstraint" p:allowWhitespace="true"/>
+    </property>
+     <property name="controlField">
+      <bean parent="Uif-TextControl" p:size="50"/>
+    </property>
+    <property name="summary" value="Gender of the Applicant"/>
+    <property name="description" value="Gender of the Applicant"/>
+  </bean>
+
+  
+  <bean id="Application-InquiryView" parent="Uif-InquiryView">
+    <property name="headerText" value="Application Inquiry"/>
+    <property name="parentLocation">
+      <bean parent="Uif-RicePortalParentLocation"/>
+    </property>
+    <property name="breadcrumbItem.siblingBreadcrumbComponent">
+      <bean parent="Uif-InquiryLocationSuggestField" p:suggest.valuePropertyName="term"/>
+    </property>
+    <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>
+    <property name="Items">
+      <list>
+        <bean parent="Uif-Disclosure-GridSection">
+          <property name="headerText" value="Applicant Information"/>
+          <property name="layoutManager.numberOfColumns" value="2"/>
+          <property name="items">
+            <list>
+              <bean parent="Uif-InputField" p:propertyName="firstName"/>
+              <bean parent="Uif-InputField" p:propertyName="lastName"/>
+              <bean parent="Uif-InputField" p:propertyName="gender"/>
+              <bean parent="Uif-InputField" p:propertyName="ethnicity"/>
+            </list>
+          </property>
+          </bean>
+        <bean parent="Uif-Disclosure-GridSection">
+          <property name="headerText" value="Application Information"/>
+          <property name="layoutManager.numberOfColumns" value="2"/>
+          <property name="items">
+            <list>
+              <bean parent="Uif-InputField" p:propertyName="campus"/>
+              <bean parent="Uif-InputField" p:propertyName="college"/>
+              <bean parent="Uif-InputField" p:propertyName="term"/>
+              <bean parent="Uif-InputField" p:propertyName="schoolColor"/>
+            </list>
+          </property>
+          </bean>
+      </list>
+    </property>
+  </bean>
+  
+ 	<bean id="TrainingApplicationLookup" parent="Uif-LookupView">
+	  <property name="headerText" value="Training Application Lookup"/>
+	  <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>
+	  <property name="criteriaFields">
+	  <list>
+	  	<bean parent="Uif-LookupCriteriaInputField" p:propertyName="firstName" />
+	  	<bean parent="Uif-LookupCriteriaInputField" p:propertyName="lastName" />
+	  	<bean parent="Uif-LookupCriteriaInputField" p:propertyName="college" />	
+	  	<bean parent="Uif-LookupCriteriaInputField" p:propertyName="term" />		  	
+	  </list>
+	  </property>
+	  <property name="resultFields">
+	  <list>
+	  	<bean parent="Uif-DataField" p:propertyName="id"/>
+	  	<bean parent="Uif-DataField" p:propertyName="firstName"/>
+	  	<bean parent="Uif-DataField" p:propertyName="lastName"/>
+	  	<bean parent="Uif-DataField" p:propertyName="college" />
+	  	<bean parent="Uif-DataField" p:propertyName="campus" />
+	  	<bean parent="Uif-DataField" p:propertyName="term" />	  	
+ 	  </list>
+	  </property>
+	  <property name="resultsGroup.renderLineActions" value="true"/>
+	</bean>
+
+
+</beans>
