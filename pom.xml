@@ -226,8 +226,8 @@
 						<password>${impex.password}</password>
 						<url>${impex.url}</url>
 						<driver>${impex.driver}</driver>
-						<delimiter>${impex.delimiter}</delimiter>
-						<delimiterType>${sql.plugin.delimiter.type}</delimiterType>
+						<delimiter>;</delimiter>
+						<delimiterType>normal</delimiterType>
 						<forceMojoExecution>${sql.plugin.force.execution}</forceMojoExecution>
 						<skip>${sql.plugin.skip}</skip>
 						<keepFormat>${sql.plugin.keepFormat}</keepFormat>
@@ -249,9 +249,25 @@
 								<username>${impex.dba.username}</username>
 								<password>${impex.dba.password}</password>
 								<srcFiles>
-									<srcFile>src/main/config/db/training/${db.vendor}/setup/000-dataobjects.sql</srcFile>
-									<srcFile>src/main/config/db/training/${db.vendor}/setup/001-namespace.sql</srcFile>
+									<srcFile>src/main/config/db/training/${db.vendor}/setup/000-rice-db-232.sql</srcFile>
+								</srcFiles>
+							</configuration>
+						</execution>
+						<execution>
+							<id>setup-2</id>
+							<phase>none</phase>
+							<goals>
+								<goal>execute</goal>
+							</goals>
+							<configuration>
+								<url>${impex.url}</url>
+								<username>${impex.username}</username>
+								<password>${impex.password}</password>
+								<srcFiles>
+									<srcFile>src/main/config/db/training/${db.vendor}/setup/001-dataobjects.sql</srcFile>
+									<srcFile>src/main/config/db/training/${db.vendor}/setup/002-namespace.sql</srcFile>
 									<srcFile>src/main/config/db/training/${db.vendor}/setup/003-roles.sql</srcFile>
+									<srcFile>src/main/config/db/training/${db.vendor}/setup/004-permissions.sql</srcFile>
 								</srcFiles>
 							</configuration>
 						</execution>
@@ -310,6 +326,10 @@
 						<executions>
 							<execution>
 								<id>setup</id>
+								<phase>install</phase>
+							</execution>
+							<execution>
+								<id>setup-2</id>
 								<phase>install</phase>
 							</execution>
 						</executions>
