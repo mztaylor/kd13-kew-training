@@ -64,6 +64,7 @@
         <value>classpath:org/kuali/rice/krworkshop/TrainingApplicationView.xml</value>
         <value>classpath:org/kuali/rice/krworkshop/kew/dataobject/TrainingApplication.xml</value>        
         <value>classpath:org/kuali/rice/krworkshop/kew/dictionary/TrainingApplicationMaintenanceDocument.xml</value>
+        <value>classpath:org/kuali/rice/krworkshop/kew/dictionary/TrainingApplicationViews.xml</value>
         <value>classpath:org/kuali/rice/krworkshop/krad/TrainingApplicationView-Lab1-components.xml</value>
         <value>classpath:org/kuali/rice/krworkshop/krad/TrainingApplicationView-Lab2-validation.xml</value>
         <value>classpath:org/kuali/rice/krworkshop/krad/TrainingApplicationView-Lab3-actions.xml</value>
