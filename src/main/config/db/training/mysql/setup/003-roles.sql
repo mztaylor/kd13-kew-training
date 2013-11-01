@@ -19,10 +19,10 @@
 -- Builds roles related to training application
 
 INSERT INTO `KRIM_ROLE_T` (`ROLE_ID`,`OBJ_ID`,`VER_NBR`,`ROLE_NM`,`NMSPC_CD`,`DESC_TXT`,`KIM_TYP_ID`,`ACTV_IND`,`LAST_UPDT_DT`)
-VALUES ('KRATRNG10001',uuid(),1,'Training App Admin','KRA-TRNG','Test role for the training app','1','Y',NOW());
+VALUES ('KRATRNG10001',uuid(),1,'Training App Admin','KRA-TRNG','Administrator for the training app','1','Y',NOW());
 
 INSERT INTO `KRIM_ROLE_T` (`ROLE_ID`,`OBJ_ID`,`VER_NBR`,`ROLE_NM`,`NMSPC_CD`,`DESC_TXT`,`KIM_TYP_ID`,`ACTV_IND`,`LAST_UPDT_DT`)
-VALUES ('KRATRNG10002',uuid(),1,'Application Approver','KRA-TRNG','Provides a final decision on the application','1','Y',NOW());
+VALUES ('KRATRNG10002',uuid(),1,'Training App Approver','KRA-TRNG','Provides a final decision on the application','1','Y',NOW());
 
 INSERT INTO `KRIM_ROLE_T` (`ROLE_ID`,`OBJ_ID`,`VER_NBR`,`ROLE_NM`,`NMSPC_CD`,`DESC_TXT`,`KIM_TYP_ID`,`ACTV_IND`,`LAST_UPDT_DT`)
-VALUES ('KRATRNG10003',uuid(),1,'Application Reviewer','KRA-TRNG','Reviews applications and provides notes','1','Y',NOW());
+VALUES ('KRATRNG10003',uuid(),1,'Training App Reviewer','KRA-TRNG','Reviews applications and provides notes','1','Y',NOW());
