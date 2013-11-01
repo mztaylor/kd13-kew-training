@@ -41,6 +41,7 @@ This file contains custom application specific portal content.
   
     <ul class="chan">
       Kew Code Labs:
+       <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/maintenance?methodToCall=start&viewId=TrainingApplication-MaintenanceView&dataObjectClassName=org.kuali.rice.krworkshop.TrainingApplication" />Kuali University - Create Application</a></li>
       <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/lookup?methodToCall=start&viewId=TrainingApplicationLookup" />Kuali University - Training Application Lookup</a></li>
   </ul>
 
