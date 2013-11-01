@@ -44,5 +44,10 @@ This file contains custom application specific portal content.
       <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/lookup?methodToCall=start&viewId=TrainingApplicationLookup" />Kuali University - Training Application Lookup</a></li>
   </ul>
 
+    <ul class="chan">
+      Workflow Configuration:
+      <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kew/RuleQuickLinks.do" />Routing & Identity Management Document Type Hierarchy</a></li>
+  </ul>
+
 </div>
 <channel:portalChannelBottom/>
