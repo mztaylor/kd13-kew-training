@@ -24,23 +24,19 @@
                            http://www.springframework.org/schema/util
                            http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
+  
   <!--
   ********************************************************************************************************************
                                   College Application - Training demonstration View
   ********************************************************************************************************************
   -->
   <!-- College Application view -->
-  <bean id="Training-CollegeApplicationView" parent="Uif-FormView">
+  <bean id="Training-CollegeApplicationView-Lab3" parent="Uif-FormView">
     <property name="headerText" value="Kuali University Student Application Form"/>
     <property name="formClass" value="org.kuali.rice.krworkshop.TrainingApplicationForm"/>
     <property name="items">
       <list>
-        <ref bean="Training-CollegeApplicationPage"/>
-      </list>
-    </property>
-    <property name="additionalScriptFiles">
-      <list>
-        <value>js/application.js</value>
+        <ref bean="Training-CollegeApplicationPage-Lab3"/>
       </list>
     </property>
     <property name="additionalCssFiles">
@@ -48,54 +44,43 @@
         <value>css/application.css</value>
       </list>
     </property>
+<!--    <property name="additionalScriptFiles">
+      <list>
+        <value>js/application.js</value>
+      </list>
+    </property>-->
   </bean>
 
   <!-- Alternate version of this view, only changing the theme -->
-  <bean id="Training-CollegeApplicationView_KNS" parent="Training-CollegeApplicationView">
+  <bean id="Training-CollegeApplicationView_KNS-Lab3" parent="Training-CollegeApplicationView">
     <property name="theme">
-     <bean parent="GlobalTheme"/>
+    <bean parent="GlobalTheme"/>
     </property>
   </bean>
 
   <!-- College Application page -->
-  <bean id="Training-CollegeApplicationPage" parent="Uif-Page">
+  <bean id="Training-CollegeApplicationPage-Lab3" parent="Uif-Page">
     <property name="headerText" value="Application Info"/>
     <property name="items">
       <list>
-        <bean parent="Training-CampusInfo"/>
-        <bean parent="Training-StudentInfo"/>
-        <bean parent="Training-StudentAddress"/>
-        <bean parent="Training-StudentReferences"/>
-        <bean parent="Training-PreviousEducation"/>
-
-        <bean parent="Uif-Message">
-          <property name="messageText"
-                    value="Click [0] to get a full list of additional documents required."/>
-          <property name="inlineComponents">
-            <list>
-              <bean parent="Uif-Link" p:href="http://www.kuali.org" p:linkText="here"/>
-            </list>
-          </property>
-        </bean>
+        <bean parent="Training-CampusInfo-Lab3"/>
+        <bean parent="Training-StudentInfo-Lab3"/>
+        <bean parent="Training-StudentAddress-Lab3"/>
       </list>
     </property>
-    <property name="footer">
+   <!-- <property name="footer">
       <bean parent="Uif-FooterBase">
         <property name="items">
           <list>
-            <bean parent="Uif-PrimaryActionButton" p:render="@{!#view.readOnly}"
-                  p:actionLabel="Submit" p:methodToCall="submit"
-                  p:performClientSideValidation="true" p:preSubmitCall="return confirm('Submit?');"
-                  p:successCallback="alert('Submit Successful')"/>
-            <bean parent="Uif-ActionLink" p:render="@{!#view.readOnly}"
-                  p:actionLabel="Clear all" p:actionScript="clearAll()"/>
+            <bean parent="Uif-PrimaryActionButton" p:render="@{!#view.readOnly}"/>
+            <bean parent="Uif-ActionLink" p:render="@{!#view.readOnly}"/>
           </list>
         </property>
       </bean>
-    </property>
+    </property>-->
   </bean>
 
-  <bean id="Training-CampusInfo" parent="Uif-HorizontalBoxSection">
+  <bean id="Training-CampusInfo-Lab3" parent="Uif-HorizontalBoxSection">
     <property name="headerText" value="Term and College Information"/>
     <property name="items">
       <list>
@@ -129,8 +114,7 @@
             </bean>
           </property>
         </bean>
-        <bean parent="Uif-InputField-LabelTop" p:label="Campus" p:propertyName="campus"
-              p:progressiveRender="@{college eq 'art' or college eq 'csc'}">
+        <bean parent="Uif-InputField-LabelTop" p:label="Campus" p:propertyName="campus">
           <property name="control">
             <bean parent="Uif-DropdownControl">
               <property name="options">
@@ -163,31 +147,22 @@
             </bean>
           </property>
         </bean>
-        <bean parent="Uif-InputField-LabelTop" p:label="Affiliate" p:propertyName="schoolColor" >
-          <property name="control">
-            <bean parent="Uif-DropdownControl" p:options-ref="school-color-options" 
-             p:onChangeScript="var c=jq(this).val();
-					jq('#'+'Training-CollegeApplicationView').animate({backgroundColor: c},100);
-					jq(this).animate({backgroundColor: c },1000);">
-            </bean>
-          </property>
-        </bean>
       </list>
     </property>
   </bean>
 
-  <bean id="Training-StudentInfo" parent="Uif-HorizontalBoxSection">
+  <bean id="Training-StudentInfo-Lab3" parent="Uif-HorizontalBoxSection">
     <property name="headerText" value="About Me"/>
-    <property name="instructionalText" value="Please fill out this form [b]completely[/b]"/>
+    <property name="instructionalText" value="Please fill out this form completely"/>
     <property name="items">
       <list>
-        <ref bean="Training-StudentInfo-Group1"/>
-        <ref bean="Training-StudentInfo-Group2"/>
+        <ref bean="Training-StudentInfo-Group1-Lab3"/>
+        <ref bean="Training-StudentInfo-Group2-Lab3"/>
       </list>
     </property>
   </bean>
 
-  <bean id="Training-StudentInfo-Group1" parent="Uif-GridGroup">
+  <bean id="Training-StudentInfo-Group1-Lab3" parent="Uif-GridGroup">
     <property name="items">
       <list>
         <bean parent="Uif-InputField" p:label="First Name" p:propertyName="firstName" p:required="true">
@@ -214,7 +189,7 @@
     </property>
   </bean>
 
-  <bean id="Training-StudentInfo-Group2" parent="Uif-GridGroup">
+  <bean id="Training-StudentInfo-Group2-Lab3" parent="Uif-GridGroup">
     <property name="items">
       <list>
         <bean parent="Uif-InputField" p:label="Gender" p:propertyName="gender" p:required="true">
@@ -238,7 +213,7 @@
           </property>
         </bean>
         <bean parent="Uif-InputField" p:label="Race/Ethnicity" p:propertyName="ethnicity" p:required="true"
-              p:instructionalText="Please select the [link='http://kuali.org']ethnicity/race(s)[/link] you most closely identify yourself as">
+              p:instructionalText="Please select the ethnicity/race(s) you most closely identify yourself as">
           <property name="control">
             <bean parent="Uif-VerticalCheckboxesControl">
               <property name="options">
@@ -248,7 +223,6 @@
                   <bean parent="Uif-KeyLabelPair" p:key="asian" p:value="Asian / Pacific Islander"/>
                   <bean parent="Uif-KeyLabelPair" p:key="hispanic" p:value="Hispanic"/>
                   <bean parent="Uif-KeyLabelPair" p:key="white" p:value="Non-hispanic White"/>
-                  <bean parent="Uif-KeyLabelPair" p:key="other" p:value="Other. Specify: [id=Training-OtherEthnicity]"/>
                 </list>
               </property>
             </bean>
@@ -259,9 +233,7 @@
     </property>
   </bean>
 
-  <bean id="Training-OtherEthnicity" parent="Uif-InputField" p:propertyName="otherEthnicity"/>
-
-  <bean id="Training-StudentAddress" parent="Uif-GridSection">
+  <bean id="Training-StudentAddress-Lab3" parent="Uif-GridSection">
     <property name="headerText" value="Address"/>
     <property name="items">
       <list>
@@ -293,7 +265,7 @@
           </property>
         </bean>
         <bean parent="Uif-InputField" p:label="Zip" p:propertyName="zip" p:required="true" p:maxLength="10"
-              p:minLength="5" p:constraintText="Only [color=red]digits[/color] allowed.">
+              p:minLength="5">
           <property name="validCharactersConstraint">
             <bean parent="ZipcodePatternConstraint"/>
           </property>
@@ -301,80 +273,5 @@
       </list>
     </property>
   </bean>
-
-  <bean id="Training-StudentReferences" parent="Uif-TableCollectionSection">
-    <property name="headerText" value="References"/>
-    <property name="instructionalText" value="Please list any references we can contact"/>
-    <property name="layoutManager.generateAutoSequence" value="true"/>
-    <property name="propertyName" value="references"/>
-    <property name="collectionObjectClass" value="org.kuali.rice.krworkshop.TrainingApplicationReference"/>
-    <property name="layoutManager.separateAddLine" value="true" />
-    <property name="layoutManager.addLineGroup.layoutManager.numberOfColumns" value="4"/>
-    <property name="items">
-      <list>
-        <bean parent="Uif-InputField" p:label="Name" p:propertyName="name" p:required="true"/>
-        <bean parent="Uif-InputField" p:label="Phone" p:propertyName="phone" p:required="true">
-          <property name="control">
-            <bean parent="Uif-TextControl" p:watermarkText="###-###-####"/>
-          </property>
-          <property name="validCharactersConstraint">
-            <bean parent="PhoneNumberPatternConstraint"/>
-          </property>
-        </bean>
-        <bean parent="Uif-InputField" p:label="Address" p:propertyName="address">
-          <property name="control">
-            <bean parent="Uif-TextAreaControl"/>
-          </property>
-        </bean>
-        <bean parent="Uif-InputField" p:label="Relationship" p:propertyName="relationship" p:required="true">
-          <property name="control">
-            <bean parent="Uif-DropdownControl">
-              <property name="options">
-                <list>
-                  <bean parent="Uif-KeyLabelPair" p:key="friend" p:value="Friend"/>
-                  <bean parent="Uif-KeyLabelPair" p:key="co-worker" p:value="Co-Worker"/>
-                  <bean parent="Uif-KeyLabelPair" p:key="teacher" p:value="Teacher"/>
-                </list>
-              </property>
-            </bean>
-          </property>
-        </bean>
-      </list>
-    </property>
-  </bean>
-
-  <bean id="Training-PreviousEducation" parent="Uif-Disclosure-StackedCollectionSection">
-    <property name="headerText" value="Previous Education" />
-    <property name="collectionObjectClass" value="org.kuali.rice.krworkshop.TrainingApplicationPreviousEducation" />
-    <property name="propertyName" value="previousEducation" />
-    <property name="layoutManager.summaryTitle" value="Course" />
-    <property name="layoutManager.summaryFields" value="course,university" />
-    <property name="items">
-      <list>
-        <bean parent="Uif-InputField" p:label="University" p:propertyName="university" p:required="true"/>
-        <bean parent="Uif-InputField" p:label="College" p:propertyName="college" p:required="true"/>
-        <bean parent="Uif-InputField" p:label="Course" p:propertyName="course" p:required="true"/>
-        <bean parent="Uif-InputField" p:label="Completion Date" p:propertyName="completionDate" >
-          <property name="control">
-            <bean parent="Uif-DateControl"/>
-          </property>
-          <property name="validCharactersConstraint">
-            <bean parent="BasicDatePatternConstraint"/>
-          </property>
-        </bean>
-      </list>
-    </property>
-  </bean>
-  
-  <util:list id="school-color-options">
-    <bean parent="Uif-KeyLabelPair" p:key="white" p:value="none"/>
-    <bean parent="Uif-KeyLabelPair" p:key="#cc5500" p:value="University of Texas"/>
-    <bean parent="Uif-KeyLabelPair" p:key="#A71930" p:value="Iowa State"/>
-    <bean parent="Uif-KeyLabelPair" p:key="#18453B" p:value="Michigan State"/>
-    <bean parent="Uif-KeyLabelPair" p:key="#228B22" p:value="Colorado State"/>
-    <bean parent="Uif-KeyLabelPair" p:key="#7D110C" p:value="Indiana University"/>
-    <bean parent="Uif-KeyLabelPair" p:key="#024731" p:value="University of Hawaii"/>
-    <bean parent="Uif-KeyLabelPair" p:key="#6A7F10" p:value="Portland State"/>       
-  </util:list>
 
 </beans>
