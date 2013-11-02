@@ -6,35 +6,43 @@ To help users understand the functionality related to KEW and how to add it to t
 # Setup
 
 ## Setup Requirements
-- MySQL 5.5.18
-- MySQL Workbench
-- SVN 1.7+
-- Maven 3.0.4+
-- Eclipse 3.8+ (or Spring Tool Suite 3.3+)
+- Java JDK 1.6+ - http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+- MySQL 5.5.18 - http://dev.mysql.com/downloads/mysql/
+- MySQL Workbench - http://dev.mysql.com/downloads/tools/workbench/
+- SVN 1.7+ - https://subversion.apache.org/packages.html
+- Maven 3.0.4+ - http://maven.apache.org/download.cgi
+- Eclipse 3.8+ (or Spring Tool Suite 3.3+) - https://spring.io/tools/sts/all
 
 ## Eclipse and Rice Setup
 
-You will need to install a copy of eclipse, mysql, and rice for this project.  Instructions for setup can be found at:
+You will need to install java, eclipse, mysql for this project.  Instructions for setup can be found at:
 
     http://site.kuali.org/rice/2.3.2/reference/html/Intro_To_Rice.html#d4798e2496
 
 ## Project Setup
 
-## Setup kew training project
+### Setup kew training project
 Clone a copy of the git project by using Eclipse > 'Import' > 'Git' > 'Projects from Git'
 On the repository source select 'Github' and enter 'git@github.com:mztaylor/kd13-kew-training.git'
 
-## Build environment
+### Build environment
 Once the project is checked out, check that it is a maven project by the 'm' icon over the project name.  You can also right
 click on the project and should see maven item in the selection.  If it is not there, select 'Configure' > 'Enable Maven Nature'
 
 Right click on the project and select 'Maven' > 'Update Project'.  Then select 'Run as' > 'maven install' to build the project.
 
+### Database Setup
+Then select 'Run as' > 'maven build...'.  Set the goal to 'clean install' and profiles to 'mysql,setup'.  Choose apply and run.
+
+### Application startup
+
+Build the project: Then select 'Run as' > 'maven build...'.  Set the goal to 'clean install' and no profile.  Choose apply and run.
+
 Right click the project and select 'Run as ' > 'Run as server'.  Select the tomcat 7 server and on Argument tab, add to vm arguments:
 
     -Xms512m -Xmx1024m -XX:PermSize=256m  -XX:MaxPermSize=256m
 
-and select 'apply' button and 'run' button.  The server should startup and you can select the [project home page](http://localhost:8080/krworkshop/)
+Select 'apply' button and 'run' button.  The server should startup and you can select the [project home page](http://localhost:8080/krworkshop/)
  
 # Training Overview
 
