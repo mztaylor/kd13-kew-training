@@ -28,18 +28,113 @@
     <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>
     <property name="items">
       <list merge="true">
-        <bean parent="Uif-MaintenanceGridSection">
-          <property name="headerText" value="Add/Edit Applicant Data"/>
-          <property name="items">
+     <bean id="TrainingApplication-StudentInfo-Identity" parent="Uif-MaintenanceGridSection">
+    <property name="headerText" value="Applicant Info" />
+    <property name="items">
+      <list>
+        <bean parent="Uif-InputField" p:label="First Name" p:propertyName="firstName" p:required="true">
+          <property name="validCharactersConstraint">
+            <bean parent="AlphaPatternConstraint"/>
+          </property>
+        </bean>
+        <bean parent="Uif-InputField" p:label="Last Name" p:propertyName="lastName" p:required="true">
+          <property name="validCharactersConstraint">
+            <bean parent="AlphaPatternConstraint"/>
+          </property>
+        </bean>
+        <bean parent="Uif-InputField" p:label="Email Address" p:propertyName="email" p:required="true">
+          <property name="validCharactersConstraint">
+            <bean parent="EmailAddressPatternConstraint"/>
+          </property>
+        </bean>
+      </list>
+    </property>
+  </bean>
+  <bean id="TrainingApplication-StudentInfo-Details" parent="Uif-MaintenanceGridSection">
+    <property name="headerText" value="Additional Details" />
+    <property name="items">
+      <list>
+        <bean parent="Uif-InputField" p:label="Gender" p:propertyName="gender" p:required="true">
+          <property name="control">
+            <bean parent="Uif-HorizontalRadioControl">
+              <property name="options">
+                <list>
+                  <bean parent="Uif-KeyLabelPair" p:key="male" p:value="Male"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="female" p:value="Female"/>
+                </list>
+              </property>
+            </bean>
+          </property>
+        </bean>
+        <bean parent="Uif-InputField" p:label="Date of Birth" p:propertyName="dob" p:required="true">
+          <property name="control">
+            <bean parent="Uif-DateControl"/>
+          </property>
+          <property name="validCharactersConstraint">
+            <bean parent="BasicDatePatternConstraint"/>
+          </property>
+        </bean>
+        <bean parent="Uif-InputField" p:label="Race/Ethnicity" p:propertyName="ethnicity" p:required="true"
+              p:instructionalText="Please select the [link='http://kuali.org']ethnicity/race(s)[/link] you most closely identify yourself as">
+          <property name="control">
+            <bean parent="Uif-VerticalCheckboxesControl">
+              <property name="options">
+                <list>
+                  <bean parent="Uif-KeyLabelPair" p:key="black" p:value="Black"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="amIn" p:value="American Indian / Alaska Native"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="asian" p:value="Asian / Pacific Islander"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="hispanic" p:value="Hispanic"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="white" p:value="Non-hispanic White"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="other" p:value="Other. Specify: [id=Training-OtherEthnicity]"/>
+                </list>
+              </property>
+            </bean>
+          </property>
+        </bean>
+      </list>
+    </property>
+  </bean>
+
+  <bean id="TrainingApplication-StudentAddress" parent="Uif-MaintenanceGridSection">
+    <property name="headerText" value="Address"/>
+    <property name="items">
+      <list>
+        <bean parent="Uif-InputField" p:label="Address 1" p:propertyName="address1" p:required="true">
+          <property name="validCharactersConstraint">
+            <bean parent="AlphaNumericWithBasicPunc"/>
+          </property>
+
+        </bean>
+        <bean parent="Uif-InputField" p:label="Address 2" p:propertyName="address2">
+          <property name="validCharactersConstraint">
+            <bean parent="AlphaNumericWithBasicPunc"/>
+          </property>
+          <property name="dependencyConstraints">
             <list>
-              <bean parent="Uif-InputField" p:propertyName="firstName"/>
-              <bean parent="Uif-InputField" p:propertyName="lastName"/>
-              <bean parent="Uif-InputField" p:propertyName="college"/>
-              <bean parent="Uif-InputField" p:propertyName="term"/>
-              <bean parent="Uif-InputField" p:propertyName="campus"/>
+              <bean parent="PrerequisiteConstraint" p:propertyName="address1"/>
             </list>
           </property>
         </bean>
+        <bean parent="Uif-InputField" p:label="City" p:propertyName="city" p:required="true">
+          <property name="validCharactersConstraint">
+            <bean parent="AlphaPatternConstraint"/>
+          </property>
+        </bean>
+        <bean parent="Uif-InputField" p:label="State" p:propertyName="state" p:required="true" p:maxLength="2"
+              p:minLength="2">
+          <property name="validCharactersConstraint">
+            <bean parent="AlphaPatternConstraint"/>
+          </property>
+        </bean>
+        <bean parent="Uif-InputField" p:label="Zip" p:propertyName="zip" p:required="true" p:maxLength="10"
+              p:minLength="5" p:constraintText="Only [color=red]digits[/color] allowed.">
+          <property name="validCharactersConstraint">
+            <bean parent="ZipcodePatternConstraint"/>
+          </property>
+        </bean>
+      </list>
+    </property>
+  </bean>
       </list>
     </property>
   </bean>
