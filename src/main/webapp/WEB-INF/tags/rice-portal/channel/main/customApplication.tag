@@ -22,7 +22,7 @@ This file contains custom application specific portal content.
 
 <%@ include file="/rice-portal/jsp/sys/riceTldHeader.jsp" %>
 
-<channel:portalChannelTop channelTitle="krworkshop"/>
+<channel:portalChannelTop channelTitle="KRAD Training"/>
 <div class="body">
 
   <ul class="chan">
@@ -37,17 +37,6 @@ This file contains custom application specific portal content.
 	  <br><br><br>
 	  Complete Page:
       <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/collegeapp?viewId=Training-CollegeApplicationView&methodToCall=start" />Kuali University - Apply Now!</a></li>
-  </ul>
-  
-    <ul class="chan">
-      Kew Code Labs:
-       <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/maintenance?methodToCall=start&viewId=TrainingApplication-MaintenanceView&dataObjectClassName=org.kuali.rice.krworkshop.TrainingApplication" />Kuali University - Create Application</a></li>
-      <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/lookup?methodToCall=start&viewId=TrainingApplicationLookup" />Kuali University - Training Application Lookup</a></li>
-  </ul>
-
-    <ul class="chan">
-      Workflow Configuration:
-      <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kew/RuleQuickLinks.do" />Routing & Identity Management Document Type Hierarchy</a></li>
   </ul>
 
 </div>

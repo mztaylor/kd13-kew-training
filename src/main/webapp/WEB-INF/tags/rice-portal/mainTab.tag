@@ -28,3 +28,9 @@ To see other files that can be overriden, look at the org.kuali.rice:rice-web mo
 <td class="content" valign="top">
   <mainChannel:customApplication />
 </td>
+<td class="content" valign="top">
+  <mainChannel:kew />
+</td>
+<td class="content" valign="top">
+  <mainChannel:workflow />
+</td>
