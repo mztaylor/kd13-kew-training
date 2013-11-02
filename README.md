@@ -32,11 +32,9 @@ click on the project and should see maven item in the selection.  If it is not t
 Right click on the project and select 'Maven' > 'Update Project'.  Then select 'Run as' > 'maven install' to build the project.
 
 ### Database Setup
-Then select 'Run as' > 'maven build...'.  Set the goal to 'clean install' and profiles to 'mysql,setup'.  Choose apply and run.
+Then select 'Run as' > 'maven build...'.  Set the goal to 'clean install' and profiles to 'mysql,setup'.  Select 'apply' and 'run'.
 
 ### Application startup
-
-Build the project: Then select 'Run as' > 'maven build...'.  Set the goal to 'clean install' and no profile.  Choose apply and run.
 
 Right click the project and select 'Run as ' > 'Run as server'.  Select the tomcat 7 server and on Argument tab, add to vm arguments:
 
