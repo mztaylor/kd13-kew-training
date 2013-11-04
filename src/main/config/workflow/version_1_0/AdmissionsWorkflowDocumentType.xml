@@ -41,7 +41,7 @@
 			</policies>
 			<routePaths>
 				<routePath>
-					<start name="Initiated" nextNode="ComitteeReview" />
+					<start name="Initiated" nextNode="CommitteeReview" />
                     <requests name="CommitteeReview" nextNode="DepartmentApproval" />
 					<requests name="DepartmentApproval" /> 
 				</routePath>
@@ -52,7 +52,7 @@
 					<mandatoryRoute>false</mandatoryRoute>
 					<finalApproval>false</finalApproval>
 				</start>
-				<requests name="ComitteeReview">
+				<requests name="CommitteeReview">
 					<activationType>S</activationType>
 					<mandatoryRoute>false</mandatoryRoute>
 					<mandatoryRoute>true</mandatoryRoute>
