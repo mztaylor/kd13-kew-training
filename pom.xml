@@ -71,6 +71,7 @@
 		<plugin.compiler.version>2.5.1</plugin.compiler.version>
 		<plugin.surefire.version>2.12.3</plugin.surefire.version>
 		<plugin.failsafe.version>2.12.3</plugin.failsafe.version>
+		<plugin.ingester.version>1.0.6-beta</plugin.ingester.version>
 		<plugin.war.version>2.2</plugin.war.version>
 		<plugin.jetty.version>8.1.7.v20120910</plugin.jetty.version>
 
@@ -103,6 +104,20 @@
 					<source>${plugin.compiler.source}</source>
 					<target>${plugin.compiler.target}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			
+			<!-- Ingester plugin to specify workflow configuration files to ingest -->
+			<plugin>
+				<groupId>org.kuali.maven.plugins</groupId>
+				<artifactId>ingester-maven-plugin</artifactId>
+				<version>${plugin.ingester.version}</version>
+				<configuration>
+					<jdbcUrl>${impex.url}</jdbcUrl>
+					<jdbcUsername>${impex.username}</jdbcUsername>
+					<jdbcPassword>${impex.password}</jdbcPassword>
+					<jdbcVendor>${db.vendor}</jdbcVendor>
+					<sourceDir>${project.basedir}/src/main/config/workflow/version_1_0/</sourceDir>
 				</configuration>
 			</plugin>
 
@@ -519,6 +534,6 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-
+		
 	</dependencies>
 </project>
