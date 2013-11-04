@@ -28,6 +28,87 @@
     <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>    
     <property name="items">
       <list merge="true">
+      <!-- Campus Info -->
+        <bean id="Training-CampusInfo" parent="Uif-HorizontalBoxSection">
+    <property name="headerText" value="Term and College Information"/>
+    <property name="items">
+      <list>
+        <bean parent="Uif-InputField-LabelTop" p:label="Term" p:propertyName="term" p:required="true">
+          <property name="control">
+            <bean parent="Uif-DropdownControl">
+              <property name="options">
+                <list>
+                  <bean parent="Uif-KeyLabelPair" p:key="" p:value=""/>
+                  <bean parent="Uif-KeyLabelPair" p:key="fall" p:value="Fall"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="spring" p:value="Spring"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="summer" p:value="Summer"/>
+                </list>
+              </property>
+            </bean>
+          </property>
+        </bean>
+        <bean parent="Uif-InputField-LabelTop" p:label="College" p:propertyName="college" p:required="true">
+          <property name="control">
+            <bean parent="Uif-DropdownControl">
+              <property name="options">
+                <list>
+                  <bean parent="Uif-KeyLabelPair" p:key="" p:value=""/>
+                  <bean parent="Uif-KeyLabelPair" p:key="art" p:value="Art"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="bus" p:value="Business"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="csc" p:value="Computer Science"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="hist" p:value="History"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="math" p:value="Math"/>
+                </list>
+              </property>
+            </bean>
+          </property>
+        </bean>
+        <bean parent="Uif-InputField-LabelTop" p:label="Campus" p:propertyName="campus">
+          <property name="control">
+            <bean parent="Uif-DropdownControl">
+              <property name="options">
+                <list>
+                  <bean parent="Uif-KeyLabelPair" p:key="" p:value=""/>
+                  <bean parent="Uif-KeyLabelPair" p:key="east" p:value="East Campus"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="west" p:value="West Campus"/>
+                </list>
+              </property>
+            </bean>
+          </property>
+          <property name="caseConstraint">
+            <bean parent="CaseConstraint">
+              <property name="propertyName" value="college"/>
+              <property name="whenConstraint">
+                <list>
+                  <bean parent="WhenConstraint">
+                    <property name="values">
+                      <list>
+                        <value>art</value>
+                        <value>csc</value>
+                      </list>
+                    </property>
+                    <property name="constraint">
+                      <bean parent="RequiredConstraint"/>
+                    </property>
+                  </bean>
+                </list>
+              </property>
+            </bean>
+          </property>
+        </bean>
+        <bean parent="Uif-InputField-LabelTop" p:label="Affiliate" p:propertyName="schoolColor" >
+          <property name="control">
+            <bean parent="Uif-DropdownControl" p:options-ref="school-color-options" 
+             p:onChangeScript="var c=jq(this).val();
+					jq('#'+'Training-CollegeApplicationView').animate({backgroundColor: c},100);
+					jq(this).animate({backgroundColor: c },1000);">
+            </bean>
+          </property>
+        </bean>
+      </list>
+    </property>
+  </bean>
+  <!--  Student Information -->      
      <bean id="TrainingApplication-StudentInfo-Identity" parent="Uif-MaintenanceGridSection">
     <property name="headerText" value="Applicant Info" />
     <property name="items">
@@ -49,7 +130,7 @@
         </bean>
       </list>
     </property>
-  </bean>
+  </bean> 
   <bean id="TrainingApplication-StudentInfo-Details" parent="Uif-MaintenanceGridSection">
     <property name="headerText" value="Additional Details" />
     <property name="items">
@@ -141,12 +222,6 @@
   
     <bean id="Application-InquiryView" parent="Uif-InquiryView">
     <property name="headerText" value="Application Inquiry"/>
-    <property name="parentLocation">
-      <bean parent="Uif-RicePortalParentLocation"/>
-    </property>
-    <property name="breadcrumbItem.siblingBreadcrumbComponent">
-      <bean parent="Uif-InquiryLocationSuggestField" p:suggest.valuePropertyName="term"/>
-    </property>
     <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>
     <property name="Items">
       <list>
