@@ -91,7 +91,23 @@
     <property name="moduleConfiguration" ref="applyModuleConfiguration"/>
   </bean>
 
+	<bean id="grlBeanImporter" abstract="true" class="org.kuali.rice.core.framework.resourceloader.GlobalResourceLoaderServiceFactoryBean" p:singleton="true" p:mustExist="true" />
+	<bean id="rice.ksb.serviceBus" p:serviceName="rice.ksb.serviceBus" parent="grlBeanImporter" />
 
+	<bean id="namespaceRoleTypeService" class="org.kuali.rice.krworkshop.service.impl.NamespaceRoleTypeServiceImpl" />
+
+    <bean id="applicationCallbackService" abstract="true" 
+              class="org.kuali.rice.ksb.api.bus.support.CallbackServiceExporter"
+              p:serviceBus-ref="rice.ksb.serviceBus"
+              p:serviceNameSpaceURI="${application.service.namespace.uri}" />
+
+    <bean id="roleTypeServiceCallback" parent="applicationCallbackService" abstract="true" 
+              p:busSecurity="true"
+              p:serviceInterface="org.kuali.rice.kim.framework.role.RoleTypeService" />
+
+	<bean parent="roleTypeServiceCallback" 
+		      p:callbackService-ref="namespaceRoleTypeService"
+		      p:localServiceName="namespaceRoleTypeService" />
 
 </beans>
 
