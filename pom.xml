@@ -283,6 +283,8 @@
 									<srcFile>src/main/config/db/training/${db.vendor}/setup/002-namespace.sql</srcFile>
 									<srcFile>src/main/config/db/training/${db.vendor}/setup/003-roles.sql</srcFile>
 									<srcFile>src/main/config/db/training/${db.vendor}/setup/004-permissions.sql</srcFile>
+									<srcFile>src/main/config/db/training/${db.vendor}/setup/005-responsibilities.sql</srcFile>
+									<srcFile>src/main/config/db/training/${db.vendor}/setup/006-role-members.sql</srcFile>
 								</srcFiles>
 							</configuration>
 						</execution>
