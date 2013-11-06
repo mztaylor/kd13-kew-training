@@ -44,7 +44,8 @@
         <ref bean="Application-address2"/>
         <ref bean="Application-city"/>
         <ref bean="Application-state"/>
-        <ref bean="Application-zip"/>                
+        <ref bean="Application-zip"/>
+        <ref bean="Application-decisionStatus"/>
       </list>
     </property>
     <property name="titleAttribute" value="id"/>
@@ -54,6 +55,7 @@
       </list>
     </property>
   </bean>
+
   <bean id="Application-id" parent="Application-id-parentBean"/>
   <bean id="Application-id-parentBean" abstract="true" parent="AttributeReferenceDummy-genericSystemId">
     <property name="name" value="id"/>
@@ -69,6 +71,7 @@
     <property name="summary" value="ID identifying the Application."/>
     <property name="description" value="ID identifying the Application."/>
   </bean>
+
   <bean id="Application-term" parent="Application-term-parentBean"/>
   <bean id="Application-term-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="term"/>
@@ -86,6 +89,7 @@
     <property name="summary" value="Term which the applicant wishes to enroll."/>
     <property name="description" value="Term which the applicant wishes to enroll."/>
   </bean>
+
   <bean id="Application-college" parent="Application-college-parentBean"/>
   <bean id="Application-college-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="college"/>
@@ -100,6 +104,7 @@
       <bean parent="Uif-TextControl" p:size="50"/>
     </property>		 
   </bean>
+
   <bean id="Application-schoolColor" parent="Application-schoolColor-parentBean"/>
   <bean id="Application-schoolColor-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="schoolColor"/>
@@ -115,6 +120,7 @@
     <property name="summary" value="School color of the College."/>
     <property name="description" value="School color of the College."/>
   </bean>
+
   <bean id="Application-campus" parent="Application-campus-parentBean"/>
   <bean id="Application-campus-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="campus"/>
@@ -131,6 +137,7 @@
     <property name="summary" value="Campus specific to the College."/>
     <property name="description" value="Campus specific to the College."/>
   </bean>
+
   <bean id="Application-firstName" parent="Application-firstName-parentBean"/>
   <bean id="Application-firstName-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="firstName"/>
@@ -148,6 +155,7 @@
     <property name="summary" value="First name of the Applicant."/>
     <property name="description" value="First name of the Applicant."/>
   </bean>
+
   <bean id="Application-lastName" parent="Application-lastName-parentBean"/>
   <bean id="Application-lastName-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="lastName"/>
@@ -165,7 +173,8 @@
     <property name="summary" value="Last name of the Applicant."/>
     <property name="description" value="Last name of the Applicant."/>
   </bean>
-    <bean id="Application-email" parent="Application-email-parentBean"/>
+
+  <bean id="Application-email" parent="Application-email-parentBean"/>
   <bean id="Application-email-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="email"/>
     <property name="forceUppercase" value="false"/>
@@ -182,7 +191,8 @@
     <property name="summary" value="Email address of the Applicant."/>
     <property name="description" value="Email address of the Applicant."/>
   </bean>
-      <bean id="Application-ethnicity" parent="Application-ethnicity-parentBean"/>
+
+  <bean id="Application-ethnicity" parent="Application-ethnicity-parentBean"/>
   <bean id="Application-ethnicity-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="ethnicity"/>
     <property name="forceUppercase" value="false"/>
@@ -200,7 +210,7 @@
     <property name="description" value="ethnicity of the Applicant."/>
   </bean>
   
-      <bean id="Application-otherEthnicity" parent="Application-otherEthnicity-parentBean"/>
+  <bean id="Application-otherEthnicity" parent="Application-otherEthnicity-parentBean"/>
   <bean id="Application-otherEthnicity-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="otherEthnicity"/>
     <property name="forceUppercase" value="false"/>
@@ -218,7 +228,7 @@
     <property name="description" value="Other Ethnicity of the Applicant."/>
   </bean>
   
-    <bean id="Application-gender" parent="Application-gender-parentBean"/>
+  <bean id="Application-gender" parent="Application-gender-parentBean"/>
   <bean id="Application-gender-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="gender"/>
     <property name="forceUppercase" value="false"/>
@@ -235,8 +245,9 @@
     <property name="summary" value="Gender of the Applicant"/>
     <property name="description" value="Gender of the Applicant"/>
   </bean>
+
   <!-- Address Details -->
-      <bean id="Application-address1" parent="Application-address1-parentBean"/>
+  <bean id="Application-address1" parent="Application-address1-parentBean"/>
   <bean id="Application-address1-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="address1"/>
     <property name="forceUppercase" value="false"/>
@@ -253,7 +264,8 @@
     <property name="summary" value="address of the Applicant."/>
     <property name="description" value="address of the Applicant."/>
   </bean>
-      <bean id="Application-address2" parent="Application-address2-parentBean"/>
+
+  <bean id="Application-address2" parent="Application-address2-parentBean"/>
   <bean id="Application-address2-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="address2"/>
     <property name="forceUppercase" value="false"/>
@@ -270,7 +282,8 @@
     <property name="summary" value="address of the Applicant."/>
     <property name="description" value="address of the Applicant."/>
   </bean>
-    <bean id="Application-city" parent="Application-city-parentBean"/>
+
+  <bean id="Application-city" parent="Application-city-parentBean"/>
   <bean id="Application-city-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="city"/>
     <property name="forceUppercase" value="false"/>
@@ -287,7 +300,8 @@
     <property name="summary" value="city of the Applicant."/>
     <property name="description" value="city address of the Applicant."/>
   </bean>
-    <bean id="Application-state" parent="Application-state-parentBean"/>
+
+  <bean id="Application-state" parent="Application-state-parentBean"/>
   <bean id="Application-state-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="state"/>
     <property name="forceUppercase" value="false"/>
@@ -304,7 +318,8 @@
     <property name="summary" value="state of the Applicant."/>
     <property name="description" value="state of the Applicant."/>
   </bean>
-    <bean id="Application-zip" parent="Application-zip-parentBean"/>
+
+  <bean id="Application-zip" parent="Application-zip-parentBean"/>
   <bean id="Application-zip-parentBean" abstract="true" parent="AttributeDefinition">
     <property name="name" value="zip"/>
     <property name="forceUppercase" value="false"/>
@@ -320,6 +335,21 @@
     </property>
     <property name="summary" value="zip code of the Applicant."/>
     <property name="description" value="zip code of the Applicant."/>
-  </bean>  
-  
+  </bean>
+
+  <bean id="Application-decisionStatus" parent="Application-decisionStatus-parentBean"/>
+  <bean id="Application-decisionStatus-parentBean" abstract="true" parent="AttributeDefinition">
+    <property name="name" value="decisionStatus"/>
+    <property name="label" value="Decision Status regarding Application"/>
+    <property name="shortLabel" value="Decision Status"/>
+    <property name="maxLength" value="24"/>
+    <property name="validCharactersConstraint">
+      <bean  parent="AnyCharacterPatternConstraint" p:allowWhitespace="true"/>
+    </property>
+     <property name="controlField">
+      <bean parent="Uif-TextControl" p:size="50"/>
+    </property>
+    <property name="summary" value="Final Decision Status regarding Application."/>
+    <property name="description" value="Final Decision Status regarding Application."/>
+  </bean>
 </beans>

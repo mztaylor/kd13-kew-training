@@ -157,7 +157,7 @@
           <property name="control">
             <bean parent="Uif-DropdownControl" p:options-ref="school-color-options">
               <property name="onChangeScript" value="var c=jq(this).val();
-					jq('#'+'Training-CollegeApplicationView-Lab7').animate({backgroundColor: c},100);"/>
+					jq('#'+'Training-CollegeApplicationView-Lab7').animate({color: '#FFFFFF', backgroundColor: c},100);"/>
             </bean>
           </property>
         </bean>

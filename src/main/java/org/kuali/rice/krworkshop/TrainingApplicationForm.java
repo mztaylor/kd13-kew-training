@@ -48,6 +48,8 @@ public class TrainingApplicationForm extends UifFormBase {
 
     private List<TrainingApplicationPreviousEducation> previousEducation = new ArrayList<TrainingApplicationPreviousEducation>();
 
+    private String decisionStatus;
+
     public String getTerm() {
         return term;
     }
@@ -70,6 +72,14 @@ public class TrainingApplicationForm extends UifFormBase {
 
     public void setCampus(String campus) {
         this.campus = campus;
+    }
+
+    public String getSchoolColor() {
+        return schoolColor;
+    }
+
+    public void setSchoolColor(String schoolColor) {
+        this.schoolColor = schoolColor;
     }
 
     public String getFirstName() {
@@ -192,13 +202,11 @@ public class TrainingApplicationForm extends UifFormBase {
         this.previousEducation = previousEducation;
     }
 
-	public String getSchoolColor() {
-		return schoolColor;
-	}
+    public String getDecisionStatus() {
+        return decisionStatus;
+    }
 
-	public void setSchoolColor(String schoolColor) {
-		this.schoolColor = schoolColor;
-	}
-    
-    
+    public void setDecisionStatus(String decisionStatus) {
+        this.decisionStatus = decisionStatus;
+    }
 }

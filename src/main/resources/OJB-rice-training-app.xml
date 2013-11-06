@@ -37,7 +37,7 @@
 
 <!-- training application form -->
 <class-descriptor class="org.kuali.rice.krworkshop.TrainingApplication" table="TRNG_APP_DOC_T">
-    <field-descriptor name="id" column="TRNG_APP_DOC_ID" jdbc-type="VARCHAR" />
+    <field-descriptor name="id" column="TRNG_APP_DOC_ID" jdbc-type="VARCHAR" primarykey="true" autoincrement="true" sequence-name="TRNG_APP_DOC_ID_S"/>
     <field-descriptor name="objectId" column="OBJ_ID" jdbc-type="VARCHAR" indexed="true"/>
     <field-descriptor name="versionNumber" column="VER_NBR" jdbc-type="BIGINT" locking="true"/>
     <field-descriptor name="documentNumber" column="DOC_HDR_ID" jdbc-type="VARCHAR" primarykey="true" indexed="true"/>
@@ -58,6 +58,7 @@
     <field-descriptor name="city" column="CITY" jdbc-type="VARCHAR"/>
     <field-descriptor name="state" column="ST_CD" jdbc-type="VARCHAR"/>
     <field-descriptor name="zip" column="ZIP" jdbc-type="VARCHAR"/>
+    <field-descriptor name="decision" column="DEC_STATUS" jdbc-type="VARCHAR"/>
   </class-descriptor>
 
 <class-descriptor class="org.kuali.rice.krworkshop.TrainingApplicationPreviousEducation" table="TRNG_APP_PREV_EXPER_T">

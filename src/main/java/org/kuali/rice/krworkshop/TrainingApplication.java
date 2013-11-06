@@ -31,13 +31,20 @@ public class TrainingApplication extends MaintenanceDocumentBase {
     private String city;
     private String state;
     private String zip;
-	
+    
     private List<TrainingApplicationReference> references = new ArrayList<TrainingApplicationReference>();
 
     private List<TrainingApplicationPreviousEducation> previousEducation = new ArrayList<TrainingApplicationPreviousEducation>();
 
-    private Boolean accepted;
-    
+    private String decisionStatus;
+    private boolean accepted;
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getTerm() {
 		return term;
 	}
@@ -140,11 +147,16 @@ public class TrainingApplication extends MaintenanceDocumentBase {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	public Long getId() {
-		return id;
+	public String getDecisionStatus() {
+		return decisionStatus;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setDecisionStatus(String decisionStatus) {
+		this.decisionStatus = decisionStatus;
 	}
-    
+    public boolean isAccepted() {
+        return accepted;
+    }
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
 }
