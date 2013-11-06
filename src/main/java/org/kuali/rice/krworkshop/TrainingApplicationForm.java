@@ -35,7 +35,7 @@ public class TrainingApplicationForm extends UifFormBase {
     private String gender;
     private Date dob;
     private boolean emailList;
-    private List<String> ethnicity = new ArrayList<String>();
+    private String ethnicity;
     private String otherEthnicity;
 
     private String address1;
@@ -126,11 +126,11 @@ public class TrainingApplicationForm extends UifFormBase {
         return emailList;
     }
 
-    public List<String> getEthnicity() {
+    public String getEthnicity() {
         return ethnicity;
     }
 
-    public void setEthnicity(List<String> ethnicity) {
+    public void setEthnicity(String ethnicity) {
         this.ethnicity = ethnicity;
     }
 

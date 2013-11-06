@@ -159,8 +159,8 @@
             <bean parent="Uif-DropdownControl">
               <property name="options">
                 <list>
-                  <bean parent="Uif-KeyLabelPair" p:key="male" p:value="Male"/>
-                  <bean parent="Uif-KeyLabelPair" p:key="female" p:value="Female"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="M" p:value="Male"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="F" p:value="Female"/>
                 </list>
               </property>
             </bean>
@@ -169,8 +169,8 @@
         <bean parent="Uif-InputField" p:label="Date of Birth" p:propertyName="dob">
         </bean>
         -->
-        <!-- Lab 1 - Step 14: Add p:instructionalText 'Please select the ethnicity/race(s) you most closely identify yourself as' 
-             and change ethnicity from Uif-DropdownControl to 'Uif-VerticalCheckboxesControl' -->
+        <!-- Lab 1 - Step 14: Add p:instructionalText 'Please select the ethnicity/race you most closely identify yourself as'
+             and change ethnicity from Uif-DropdownControl to 'Uif-VerticalRadioControl' -->
         <!-- 
         <bean parent="Uif-InputField" p:label="Race/Ethnicity" p:propertyName="ethnicity">
           <property name="control">

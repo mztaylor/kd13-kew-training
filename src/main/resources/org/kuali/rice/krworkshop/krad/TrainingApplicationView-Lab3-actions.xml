@@ -197,8 +197,8 @@
             <bean parent="Uif-HorizontalRadioControl">
               <property name="options">
                 <list>
-                  <bean parent="Uif-KeyLabelPair" p:key="male" p:value="Male"/>
-                  <bean parent="Uif-KeyLabelPair" p:key="female" p:value="Female"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="M" p:value="Male"/>
+                  <bean parent="Uif-KeyLabelPair" p:key="F" p:value="Female"/>
                 </list>
               </property>
             </bean>
@@ -213,9 +213,9 @@
           </property>
         </bean>
         <bean parent="Uif-InputField" p:label="Race/Ethnicity" p:propertyName="ethnicity" p:required="true"
-              p:instructionalText="Please select the ethnicity/race(s) you most closely identify yourself as">
+              p:instructionalText="Please select the ethnicity/race you most closely identify yourself as">
           <property name="control">
-            <bean parent="Uif-VerticalCheckboxesControl">
+            <bean parent="Uif-VerticalRadioControl">
               <property name="options">
                 <list>
                   <bean parent="Uif-KeyLabelPair" p:key="black" p:value="Black"/>

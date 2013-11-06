@@ -7,11 +7,11 @@ import java.util.List;
 import org.kuali.rice.krad.bo.PersistableBusinessObjectBase;
 import org.kuali.rice.krad.maintenance.MaintenanceDocumentBase;
 
-public class TrainingApplication extends MaintenanceDocumentBase {
+public class TrainingApplication extends PersistableBusinessObjectBase {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
+	private String id;
 	private String term;
     private String college;
     private String campus;
@@ -39,10 +39,10 @@ public class TrainingApplication extends MaintenanceDocumentBase {
     private String decisionStatus;
     private boolean accepted;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getTerm() {
