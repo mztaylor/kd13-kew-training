@@ -37,16 +37,17 @@
 			<routePaths>
 				<routePath>
 					<start name="AdHoc" nextNode="CommitteeReview" />
-                    <requests name="CommitteeReview" nextNode="DepartmentApproval" />
-					<requests name="DepartmentApproval" /> 
+                    <role name="CommitteeReview" nextNode="DepartmentApproval" />
+					<role name="DepartmentApproval" /> 
 				</routePath>
 			</routePaths>
 			<routeNodes>
 				<start name="AdHoc" />
-				<requests name="CommitteeReview">
+				<role name="CommitteeReview">
+		            <qualifierResolverClass>org.kuali.rice.kns.workflow.attribute.DataDictionaryQualifierResolver</qualifierResolverClass>
 					<activationType>S</activationType>
 					<mandatoryRoute>false</mandatoryRoute>
-				</requests>
+				</role>
 				<role name="DepartmentApproval">
 		            <qualifierResolverClass>org.kuali.rice.kns.workflow.attribute.DataDictionaryQualifierResolver</qualifierResolverClass>
 		            <activationType>P</activationType>
