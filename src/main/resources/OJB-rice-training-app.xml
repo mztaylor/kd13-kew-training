@@ -49,7 +49,8 @@
     <field-descriptor name="email" column="EMAIL" jdbc-type="VARCHAR"/>
     <field-descriptor name="gender" column="GENDER" jdbc-type="VARCHAR"/>
     <field-descriptor name="dob" column="DOB_DT" jdbc-type="TIMESTAMP"/>
-    <field-descriptor name="emailList" column="EMAIL_LIST_IND" jdbc-type="VARCHAR"/>
+    <field-descriptor name="emailList" column="EMAIL_LIST_IND" jdbc-type="VARCHAR"
+        conversion="org.kuali.rice.core.framework.persistence.ojb.conversion.OjbCharBooleanConversion"/>
     <field-descriptor name="ethnicity" column="ETHN" jdbc-type="VARCHAR"/>
     <field-descriptor name="otherEthnicity" column="OTH_ETHN" jdbc-type="VARCHAR"/>
     <field-descriptor name="address1" column="ADDR_1" jdbc-type="VARCHAR"/>
