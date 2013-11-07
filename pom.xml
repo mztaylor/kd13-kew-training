@@ -106,20 +106,6 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
-			
-			<!-- Ingester plugin to specify workflow configuration files to ingest -->
-			<plugin>
-				<groupId>org.kuali.maven.plugins</groupId>
-				<artifactId>ingester-maven-plugin</artifactId>
-				<version>${plugin.ingester.version}</version>
-				<configuration>
-					<jdbcUrl>${impex.url}</jdbcUrl>
-					<jdbcUsername>${impex.username}</jdbcUsername>
-					<jdbcPassword>${impex.password}</jdbcPassword>
-					<jdbcVendor>${db.vendor}</jdbcVendor>
-					<sourceDir>${project.basedir}/src/main/config/workflow/version_1_0/</sourceDir>
-				</configuration>
-			</plugin>
 
 			<!-- Using war overlays to extract the web content from the rice web module. -->
 			<plugin>
@@ -297,6 +283,40 @@
 						</dependency>
 					</dependencies>
 				</plugin>
+
+				<!-- Ingester plugin to specify workflow configuration files to ingest -->
+				<plugin>
+					<groupId>org.kuali.maven.plugins</groupId>
+					<artifactId>ingester-maven-plugin</artifactId>
+					<version>${plugin.ingester.version}</version>
+					<configuration>
+						<jdbcUrl>${impex.url}</jdbcUrl>
+						<jdbcUsername>${impex.username}</jdbcUsername>
+						<jdbcPassword>${impex.password}</jdbcPassword>
+						<jdbcVendor>${db.vendor}</jdbcVendor>
+						<namespace>rsk</namespace>
+					</configuration>
+					<executions>
+						<execution>
+							<id>setup-workflow</id>
+							<phase>none</phase>
+							<goals>
+								<goal>ingest</goal>
+							</goals>
+							<configuration>
+								<sourceDir>${project.basedir}/src/main/config/workflow/setup/</sourceDir>
+							</configuration>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>${jdbc.groupId}</groupId>
+							<artifactId>${jdbc.artifactId}</artifactId>
+							<version>${jdbc.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -324,6 +344,27 @@
 				<jdbc.artifactId>${mysql.jdbc.artifactId}</jdbc.artifactId>
 				<jdbc.version>${mysql.jdbc.version}</jdbc.version>
 			</properties>
+		</profile>
+
+		<profile>
+			<id>setup-workflow</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.kuali.maven.plugins</groupId>
+						<artifactId>ingester-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>setup-workflow</id>
+								<phase>install</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<!-- database setup profile: handles installation of training application 
 			tables and data -->
