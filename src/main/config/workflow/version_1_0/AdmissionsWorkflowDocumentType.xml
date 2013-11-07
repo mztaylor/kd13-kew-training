@@ -25,9 +25,9 @@
 			<description>Admissions Workflow Document</description>
 			<label>Admissions Workflow Document</label>
 			<parent>RiceDocument</parent>
-			<postProcessorName>org.kuali.rice.kew.postprocessor.DefaultPostProcessor
+			<postProcessorName>org.kuali.rice.krad.workflow.postprocessor.KualiPostProcessor
 			</postProcessorName>
-			<docHandler>_blank</docHandler>
+			<docHandler>${kr.krad.url}/maintenance?methodToCall=docHandler</docHandler>
 			<superUserGroupName namespace="KR-WKFLW">WorkflowAdmin
 			</superUserGroupName>
 			<blanketApproveGroupName namespace="KR-WKFLW">WorkflowAdmin
