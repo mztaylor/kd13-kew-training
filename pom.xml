@@ -286,6 +286,7 @@
 								<password>${impex.password}</password>
 								<srcFiles>
 									<srcFile>src/main/config/db/training/${db.vendor}/updates/003-roles.sql</srcFile>
+                                    <srcFile>src/main/config/db/training/${db.vendor}/updates/004-permissions.sql</srcFile>
 									<srcFile>src/main/config/db/training/${db.vendor}/updates/005-responsibilities.sql</srcFile>
 									<srcFile>src/main/config/db/training/${db.vendor}/updates/006-role-members.sql</srcFile>
 								</srcFiles>

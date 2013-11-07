@@ -26,7 +26,8 @@
 
   <bean id="Training-MaintenanceView" parent="Uif-MaintenanceView">
     <property name="headerText" value="Training Application Maintenance"/>
-    <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>    
+    <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>
+    <property name="viewHelperServiceClass" value="org.kuali.rice.krworkshop.TrainingApplicationMaintainableImpl"/>
     <property name="items">
       <list merge="true">
         <!-- Application Info -->
@@ -34,8 +35,8 @@
           <property name="headerText" value="Application Information"/>
           <property name="items">
             <list>
-              <bean parent="Uif-DataField" p:label="Application Number" p:propertyName="id"
-                    p:forcedValue="@{#sequence('TRNG_APP_DOC_ID_S')}"/>
+              <bean parent="Uif-DataField" p:label="Application Number" p:propertyName="id" p:enableAutoInquiry="false"
+                    p:defaultValue="@{#sequence('TRNG_APP_DOC_ID_S')}"/>
             </list>
           </property>
         </bean>
@@ -222,7 +223,8 @@
           </property>
         </bean>
         <bean parent="Uif-MaintenanceGridSection">
-          <property name="render" value="@{document.documentHeader.workflowDocument.status.code != 'I'}"/>
+          <property name="render" value="@{document.documentHeader.workflowDocument.status.code != 'I'
+                                       and document.documentHeader.workflowDocument.status.code != 'S'}"/>
           <property name="headerText" value="Decision Status" />
           <property name="items">
             <list>
@@ -243,7 +245,7 @@
                     </property>
                   </bean>
                 </property>
-                <!-- KIM Exercise - Uncomment componentSecurity -->
+                <!-- KIM Exercise - uncomment componentSecurity -->
                 <!--
                 <property name="componentSecurity.editAuthz" value="true"/>
                 -->
