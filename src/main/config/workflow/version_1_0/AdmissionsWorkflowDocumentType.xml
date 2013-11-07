@@ -65,7 +65,7 @@
 				</start>
 				<role name="CommitteeReview">
 					<qualifierResolverClass>org.kuali.rice.kew.role.NullQualifierResolver</qualifierResolverClass>
-					<activationType>P</activationType>
+					<activationType>S</activationType>
 				</role>
 				<role name="DepartmentApproval">
 					<qualifierResolverClass>org.kuali.rice.kns.workflow.attribute.DataDictionaryQualifierResolver</qualifierResolverClass>
