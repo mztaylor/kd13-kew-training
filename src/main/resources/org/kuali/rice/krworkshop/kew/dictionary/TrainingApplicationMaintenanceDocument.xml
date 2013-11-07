@@ -34,6 +34,36 @@
         <value>id</value>
       </list>
     </property>
+	<property name="workflowAttributes" ref="TrainingApplicationMaintenanceDocument-workflowAttributes" />
   </bean>
- 
+
+	<bean id="TrainingApplicationMaintenanceDocument-workflowAttributes" parent="WorkflowAttributes">
+		<property name="routingTypeDefinitions">
+			<map>
+				<entry key="DepartmentApproval"><!-- Workflow Route Node Name -->
+					<bean parent="RoutingTypeDefinition">
+		    			<!-- Name of attributes to expose to workflow -->
+				    	<property name="routingAttributes">
+				    		<list>
+				    			<bean parent="RoutingAttribute" p:qualificationAttributeName="campusCode" />
+				    		</list>
+				    	</property>
+				    	<!-- Where to find each of the attributes above within the document.
+				    		 Uses standard nested property notation. -->
+				    	<property name="documentValuePathGroups">
+				    		<list>
+				    			<bean parent="DocumentValuePathGroup">
+									<property name="documentValues">
+								   		<list>
+								   			<value>newMaintainableObject.dataObject.campus</value>
+								   		</list>
+							   		</property>
+							   	</bean>
+				    		</list>
+				    	</property>					
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean> 
 </beans>

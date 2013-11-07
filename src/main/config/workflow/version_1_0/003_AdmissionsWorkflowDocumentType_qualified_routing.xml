@@ -46,7 +46,6 @@
 				<role name="CommitteeReview">
 		            <qualifierResolverClass>org.kuali.rice.kns.workflow.attribute.DataDictionaryQualifierResolver</qualifierResolverClass>
 					<activationType>S</activationType>
-					<mandatoryRoute>false</mandatoryRoute>
 				</role>
 				<role name="DepartmentApproval">
 		            <qualifierResolverClass>org.kuali.rice.kns.workflow.attribute.DataDictionaryQualifierResolver</qualifierResolverClass>
