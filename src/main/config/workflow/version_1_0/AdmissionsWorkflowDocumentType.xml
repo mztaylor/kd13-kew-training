@@ -33,17 +33,28 @@
 			<blanketApproveGroupName namespace="KR-WKFLW">WorkflowAdmin
 			</blanketApproveGroupName>
 			<active>true</active>
+			<validApplicationStatuses>
+				<status>Submitted</status>
+				<status>Under Review</status>
+				<status>Awaiting Decision</status>
+				<status>Approved</status>
+				<status>Rejected</status>
+			</validApplicationStatuses>
 			<policies>
 				<policy>
 					<name>DEFAULT_APPROVE</name>
 					<value>false</value>
 				</policy>
+				<policy>
+					<name>DOCUMENT_STATUS_POLICY</name>
+					<stringValue>BOTH</stringValue>
+				</policy>
 			</policies>
 			<routePaths>
 				<routePath>
-					<start name="Initiated" nextNode="CommitteeReview" />
-                    <requests name="CommitteeReview" nextNode="DepartmentApproval" />
-					<requests name="DepartmentApproval" /> 
+					<start name="Initiated" nextNode="CommitteeReview" nextAppDocStatus="Under Review" />
+					<role name="CommitteeReview" nextNode="DepartmentApproval" nextAppDocStatus="Awaiting Decision" />
+					<role name="DepartmentApproval" /> 
 				</routePath>
 			</routePaths>
 			<routeNodes>
@@ -52,16 +63,14 @@
 					<mandatoryRoute>false</mandatoryRoute>
 					<finalApproval>false</finalApproval>
 				</start>
-				<requests name="CommitteeReview">
-					<activationType>S</activationType>
-					<mandatoryRoute>false</mandatoryRoute>
-					<mandatoryRoute>true</mandatoryRoute>
-				</requests>
-				<requests name="DepartmentApproval">
-					<activationType>S</activationType>
-					<mandatoryRoute>false</mandatoryRoute>
-					<mandatoryRoute>true</mandatoryRoute>
-				</requests>
+				<role name="CommitteeReview">
+					<qualifierResolverClass>org.kuali.rice.kew.role.NullQualifierResolver</qualifierResolverClass>
+					<activationType>P</activationType>
+				</role>
+				<role name="DepartmentApproval">
+					<qualifierResolverClass>org.kuali.rice.kns.workflow.attribute.DataDictionaryQualifierResolver</qualifierResolverClass>
+					<activationType>P</activationType>
+				</role>
 			</routeNodes>     
 		</documentType>
 	</documentTypes>
