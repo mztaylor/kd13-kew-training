@@ -26,15 +26,15 @@ This file contains custom application specific portal content.
 <div class="body">
   
     <ul class="chan">
-      Kew Code Labs:
-       <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/maintenance?methodToCall=start&viewId=TrainingApplication-MaintenanceView&dataObjectClassName=org.kuali.rice.krworkshop.TrainingApplication" />Kuali University - Create Application</a></li>
-      <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kr-krad/lookup?methodToCall=start&viewId=TrainingApplicationLookup" />Kuali University - Training Application Lookup</a></li>
-  </ul>
+        Kew Code Labs:
+        <li><portal:portalLink displayTitle="true" title="Kuali University - Create Application" url="${ConfigProperties.application.url}/kr-krad/maintenance?methodToCall=start&viewId=TrainingApplication-MaintenanceView&dataObjectClassName=org.kuali.rice.krworkshop.TrainingApplication&returnLocation=${ConfigProperties.application.url}/portal.do&hideReturnLink=true"/></li>
+        <li><portal:portalLink displayTitle="true" title="Kuali University - Training Application Lookup" url="${ConfigProperties.application.url}/kr-krad/lookup?methodToCall=start&viewId=TrainingApplicationLookup&showMaintenanceLinks=true&returnLocation=${ConfigProperties.application.url}/portal.do&hideReturnLink=true"/></li>
+    </ul>
 
     <ul class="chan">
-      Workflow Configuration:
-      <li><a class="portal_link" target="_blank" href="${ConfigProperties.application.url}/kew/RuleQuickLinks.do" />Routing & Identity Management Document Type Hierarchy</a></li>
-  </ul>
+        Workflow Configuration:
+        <li><portal:portalLink displayTitle="true" title="Routing & Identity Management Document Type Hierarchy" url="${ConfigProperties.application.url}/kew/RuleQuickLinks.do?returnLocation=${ConfigProperties.application.url}/portal.do&hideReturnLink=true"/></li>
+    </ul>
 
 </div>
 <channel:portalChannelBottom/>
