@@ -23,8 +23,8 @@
                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                            http://www.springframework.org/schema/util
                            http://www.springframework.org/schema/util/spring-util-3.0.xsd">
-  <bean id="TrainingApplication" parent="TrainingApplication-parentBean"/>
-  <bean id="TrainingApplication-parentBean" abstract="true" parent="DataObjectEntry">
+  <bean id="Application" parent="Application-parentBean"/>
+  <bean id="Application-parentBean" abstract="true" parent="DataObjectEntry">
     <property name="dataObjectClass" value="org.kuali.rice.krworkshop.TrainingApplication"/>
     <property name="objectLabel" value="Training Application"/>
     <property name="attributes">
