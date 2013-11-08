@@ -27,8 +27,6 @@
   <bean id="TrainingApplicationMaintenanceDocument" parent="uifMaintenanceDocumentEntry">
     <property name="dataObjectClass" value="org.kuali.rice.krworkshop.TrainingApplication"/>
     <property name="documentTypeName" value="AdmissionsWorkflowDocument"/>
-    <property name="documentAuthorizerClass"
-              value="org.kuali.rice.krad.maintenance.MaintenanceDocumentAuthorizerBase"/>
     <property name="lockingKeys">
       <list>
         <value>id</value>

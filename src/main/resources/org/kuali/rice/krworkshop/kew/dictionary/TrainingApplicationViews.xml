@@ -24,13 +24,25 @@
                            http://www.springframework.org/schema/util
                            http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-  <bean id="TrainingApplication-MaintenanceView" parent="Uif-MaintenanceView">
+  <bean id="Training-MaintenanceView" parent="Uif-MaintenanceView">
     <property name="headerText" value="Training Application Maintenance"/>
-    <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>    
+    <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>
+    <property name="viewHelperServiceClass" value="org.kuali.rice.krworkshop.TrainingApplicationMaintainableImpl"/>
     <property name="items">
       <list merge="true">
+        <!-- Application Info -->
+        <bean parent="Uif-HorizontalBoxSection">
+          <property name="headerText" value="Application Information"/>
+          <property name="items">
+            <list>
+              <bean parent="Uif-DataField" p:label="Application Number" p:propertyName="id" p:enableAutoInquiry="false"
+                    p:defaultValue="@{#sequence('TRNG_APP_DOC_ID_S')}"/>
+            </list>
+          </property>
+        </bean>
+
         <!-- Campus Info -->
-        <bean id="Training-CampusInfo" parent="Uif-HorizontalBoxSection">
+        <bean parent="Uif-HorizontalBoxSection">
           <property name="headerText" value="Term and College Information"/>
           <property name="items">
             <list>
@@ -96,8 +108,7 @@
                 <property name="control">
                   <bean parent="Uif-DropdownControl" p:options-ref="school-color-options"
                         p:onChangeScript="var c=jq(this).val();
-                          jq('#'+'Training-CollegeApplicationView').animate({color: '#FFFFFF', backgroundColor: c},100);
-                          jq(this).animate({color: '#FFFFFF', backgroundColor: c},1000);">
+                                          jq(this).animate({color: '#FFFFFF', backgroundColor: c},1000);">
                   </bean>
                 </property>
               </bean>
@@ -106,7 +117,7 @@
         </bean>
 
         <!--  Student Information -->
-        <bean id="TrainingApplication-StudentInfo-Identity" parent="Uif-MaintenanceGridSection">
+        <bean parent="Uif-MaintenanceGridSection">
           <property name="headerText" value="Applicant Info" />
           <property name="items">
             <list>
@@ -128,7 +139,7 @@
             </list>
           </property>
         </bean>
-        <bean id="TrainingApplication-StudentInfo-Details" parent="Uif-MaintenanceGridSection">
+        <bean parent="Uif-MaintenanceGridSection">
           <property name="headerText" value="Additional Details" />
           <property name="items">
             <list>
@@ -172,7 +183,7 @@
             </list>
           </property>
         </bean>
-        <bean id="TrainingApplication-StudentAddress" parent="Uif-MaintenanceGridSection">
+        <bean parent="Uif-MaintenanceGridSection">
           <property name="headerText" value="Address"/>
           <property name="items">
             <list>
@@ -211,7 +222,7 @@
             </list>
           </property>
         </bean>
-        <bean id="TrainingApplication-DecisionStatus" parent="Uif-MaintenanceGridSection">
+        <bean parent="Uif-MaintenanceGridSection">
           <property name="render" value="@{document.documentHeader.workflowDocument.status.code != 'I'
                                        and document.documentHeader.workflowDocument.status.code != 'S'}"/>
           <property name="headerText" value="Decision Status" />
@@ -220,6 +231,7 @@
               <bean parent="Uif-InputField" p:label="Decision Status" p:propertyName="decisionStatus"
                     p:required="@{document.documentHeader.workflowDocument.status.code != 'I'
                               and document.documentHeader.workflowDocument.status.code != 'S'}"
+                    p:readOnly="@{document.documentHeader.workflowDocument.status.code != 'R'}"
                     p:instructionalText="Please select the final decision for this application">
                 <property name="control">
                   <bean parent="Uif-VerticalRadioControl">
@@ -233,10 +245,9 @@
                     </property>
                   </bean>
                 </property>
-                <!-- KIM Exercise - Uncomment componentSecurity
-                <property name="componentSecurity">
-                  <bean parent="Uif-DataFieldSecurity" p:viewAuthz="true" p:editAuthz="true"/>
-                </property>
+                <!-- KIM Exercise - uncomment componentSecurity -->
+                <!--
+                <property name="componentSecurity.editAuthz" value="true"/>
                 -->
               </bean>
             </list>
@@ -246,7 +257,7 @@
     </property>
   </bean>
 
-  <bean id="Application-InquiryView" parent="Uif-InquiryView">
+  <bean id="Training-InquiryView" parent="Uif-InquiryView">
     <property name="headerText" value="Application Inquiry"/>
     <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>
     <property name="items">
@@ -279,7 +290,7 @@
     </property>
   </bean>
   
-  <bean id="TrainingApplicationLookup" parent="Uif-LookupView">
+  <bean id="Training-LookupView" parent="Uif-LookupView">
     <property name="headerText" value="Training Application Lookup"/>
     <property name="dataObjectClassName" value="org.kuali.rice.krworkshop.TrainingApplication"/>
     <property name="criteriaFields">

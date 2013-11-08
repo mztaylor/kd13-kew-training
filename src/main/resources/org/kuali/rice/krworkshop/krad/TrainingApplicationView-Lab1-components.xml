@@ -186,7 +186,7 @@
               </property>
             </bean>
           </property>
-          <property name="readOnlyDisplayReplacement" value="@{ethnicity.toString()}"/>
+          <property name="readOnlyDisplayReplacement" value="@{ethnicity?.toString()}"/>
         </bean>
          -->
       </list>

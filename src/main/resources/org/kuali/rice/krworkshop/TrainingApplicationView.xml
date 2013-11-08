@@ -167,10 +167,9 @@
         <bean parent="Uif-InputField-LabelTop" p:label="Affiliate" p:propertyName="schoolColor" >
           <property name="control">
             <bean parent="Uif-DropdownControl" p:options-ref="school-color-options" 
-             p:onChangeScript="var c=jq(this).val();
-					jq('#'+'Training-CollegeApplicationView').animate({color: '#FFFFFF', backgroundColor: c},100);
-					jq(this).animate({color: '#FFFFFF', backgroundColor: c},1000);">
-            </bean>
+                  p:onChangeScript="var c=jq(this).val();
+			                        jq('#'+'Training-CollegeApplicationView').animate({backgroundColor: c},100);
+			                        jq(this).animate({color: '#FFFFFF', backgroundColor: c},1000);"/>
           </property>
         </bean>
       </list>
@@ -254,7 +253,7 @@
               </property>
             </bean>
           </property>
-          <property name="readOnlyDisplayReplacement" value="@{ethnicity.toString()}"/>
+          <property name="readOnlyDisplayReplacement" value="@{ethnicity?.toString()}"/>
         </bean>
       </list>
     </property>
