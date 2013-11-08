@@ -352,7 +352,8 @@
     <bean parent="Uif-KeyLabelPair" p:key="#228B22" p:value="Colorado State"/>
     <bean parent="Uif-KeyLabelPair" p:key="#7D110C" p:value="Indiana University"/>
     <bean parent="Uif-KeyLabelPair" p:key="#024731" p:value="University of Hawaii"/>
-    <bean parent="Uif-KeyLabelPair" p:key="#6A7F10" p:value="Portland State"/>       
+    <bean parent="Uif-KeyLabelPair" p:key="#6A7F10" p:value="Portland State"/>
+    <bean parent="Uif-KeyLabelPair" p:key="#39275B" p:value="University of Washington"/>
   </util:list>
   
 <!-- *** Lab 6: Step: 9 ***-->
