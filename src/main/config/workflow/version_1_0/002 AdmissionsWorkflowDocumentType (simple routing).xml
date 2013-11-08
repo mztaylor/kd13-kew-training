@@ -27,15 +27,25 @@
 			<parent>RiceDocument</parent>
 			<docHandler>${krad.url}/maintenance?methodToCall=docHandler</docHandler>
 			<active>true</active>
-            <routingVersion>2</routingVersion>
+
 			<superUserGroupName namespace="KR-WKFLW">WorkflowAdmin</superUserGroupName>
 			<blanketApproveGroupName namespace="KR-WKFLW">WorkflowAdmin</blanketApproveGroupName>
-			<policies>
-				<policy>
-					<name>DEFAULT_APPROVE</name>
-					<value>true</value>
-				</policy>
-			</policies>
+			<defaultExceptionGroupName namespace="KR-WKFLW">WorkflowAdmin</defaultExceptionGroupName>
+
+			<routePaths>
+				<routePath>
+					<start name="AdHoc" nextNode="CommitteeReview" />
+                    <role name="CommitteeReview" />
+				</routePath>
+			</routePaths>
+			<routeNodes>
+				<start name="AdHoc" />
+				<role name="CommitteeReview">
+		            <qualifierResolverClass>org.kuali.rice.kew.role.NullQualifierResolver</qualifierResolverClass>
+					<activationType>S</activationType>
+				</role>
+			</routeNodes>     
+
 		</documentType>
 	</documentTypes>
 </data>
