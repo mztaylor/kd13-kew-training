@@ -5,7 +5,7 @@
 
 	<bean id="NamespaceMaintenanceDocument" parent="NamespaceMaintenanceDocument-parentBean">
 		<property name="workflowProperties">
-			<null />
+			<null /><!-- Need to blank the delivered property list. -->
 		</property>
 		<property name="workflowAttributes">
 			<ref bean="NamespaceMaintenanceDocument-workflowAttributes" />
@@ -16,16 +16,15 @@
 		<property name="routingTypeDefinitions">
 			<map>
 				<entry key="Namespace">
-					<bean class="org.kuali.rice.krad.datadictionary.RoutingTypeDefinition">
+					<bean parent="RoutingTypeDefinition">
 				    	<property name="routingAttributes">
 				    		<list>
-				    			<bean class="org.kuali.rice.krad.datadictionary.RoutingAttribute"
-				    				p:qualificationAttributeName="namespaceCode" />
+				    			<bean parent="RoutingAttribute" p:qualificationAttributeName="namespaceCode" />
 				    		</list>
 				    	</property>
 				    	<property name="documentValuePathGroups">
 				    		<list>
-				    			<bean class="org.kuali.rice.krad.datadictionary.DocumentValuePathGroup">
+				    			<bean parent="DocumentValuePathGroup">
 									<property name="documentValues">
 								   		<list>
 								   			<value>newMaintainableObject.businessObject.code</value>
@@ -40,9 +39,9 @@
 		</property>
 		<property name="searchingTypeDefinitions">
 			<list>
-				<bean class="org.kuali.rice.krad.datadictionary.SearchingTypeDefinition">
+				<bean parent="SearchingTypeDefinition">
 					<property name="searchingAttribute">
-						<bean class="org.kuali.rice.krad.datadictionary.SearchingAttribute"
+						<bean parent="SearchingAttribute"
 							p:businessObjectClassName="org.kuali.rice.coreservice.impl.namespace.NamespaceBo"
 							p:attributeName="code" />
 					</property>
