@@ -83,9 +83,9 @@
 
 		<!-- training solutions -->
 		<training.db.solution.sql></training.db.solution.sql>		
-		<training.db.solution1.sql>src/main/config/db/training/${db.vendor}/solutions/001-solutions.sql</training.db.solution1.sql>
-		<training.db.solution2.sql>src/main/config/db/training/${db.vendor}/solutions/002-solutions.sql</training.db.solution2.sql>
-		<training.db.solution3.sql>src/main/config/db/training/${db.vendor}/solutions/003-solutions.sql</training.db.solution3.sql>
+		<training.db.solution1.sql>src/main/config/db/training/${db.vendor}/solutions/001-solution.sql</training.db.solution1.sql>
+		<training.db.solution2.sql>src/main/config/db/training/${db.vendor}/solutions/002-solution.sql</training.db.solution2.sql>
+		<training.db.solution3.sql>src/main/config/db/training/${db.vendor}/solutions/003-solution.sql</training.db.solution3.sql>
 	</properties>
 
 	<repositories>
