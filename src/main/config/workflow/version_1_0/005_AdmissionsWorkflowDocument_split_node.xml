@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright 2005-2013 The Kuali Foundation
+
+    Licensed under the Educational Community License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.opensource.org/licenses/ecl2.php
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<data xmlns="ns:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="ns:workflow resource:WorkflowData">
+	<documentTypes xmlns="ns:workflow/DocumentType"
+		xsi:schemaLocation="ns:workflow/DocumentType resource:DocumentType">
+		<documentType>
+			<name>AdmissionsWorkflowDocument</name>
+			<description>Admissions Workflow Document</description>
+			<label>Admissions Workflow Document</label>
+			<parent>RiceDocument</parent>
+			<docHandler>${krad.url}/maintenance?methodToCall=docHandler</docHandler>
+			<active>true</active>
+			<validApplicationStatuses>
+				<status>Submitted</status>
+				<status>Under Review</status>
+				<status>Awaiting Decision</status>
+				<status>Approved</status>
+				<status>Waitlisted</status>
+				<status>Rejected</status>
+			</validApplicationStatuses>
+			<policies>
+				<policy>
+					<name>DEFAULT_APPROVE</name>
+					<value>false</value>
+				</policy>
+				<policy>
+					<name>DOCUMENT_STATUS_POLICY</name>
+					<stringValue>BOTH</stringValue>
+				</policy>
+			</policies>
+			<routePaths>
+				<routePath>
+					<start name="Initiated" nextNode="InitialReview" nextAppDocStatus="Submitted" />
+					<start name="InitialReview" nextNode="CommitteeReview" nextAppDocStatus="Under Review" />
+					<role name="CommitteeReview" nextNode="DepartmentApproval" nextAppDocStatus="Awaiting Decision" />
+					<role name="DepartmentApproval" nextNode="DecisionWithNotification" />
+					<split name="DecisionWithNotification">
+					<branch name="AF">
+					  <simple name="accepted" nextNode="DecisionComplete" nextAppDocStatus="Approved" />
+					</branch>
+					<branch name="AP"> 
+					  <simple name="provisional" nextNode="DecisionComplete" nextAppDocStatus="Approved" />
+					</branch>
+					<branch name="WL">
+					  <simple name="waitlisted" nextNode="DecisionComplete" nextAppDocStatus="Waitlisted" />
+					</branch>
+					<branch name="RJ">
+					  <simple name="rejected" nextNode="DecisionComplete" nextAppDocStatus="Rejected" />
+					</branch>
+					<branch name="DEFAULT">
+					  <simple name="default" nextNode="DecisionComplete" />
+					</branch>
+					</split> 
+					<join name="DecisionComplete" />
+				</routePath>
+			</routePaths>
+			<routeNodes>
+				<start name="Initiated">
+					<activationType>P</activationType>
+					<mandatoryRoute>false</mandatoryRoute>
+					<finalApproval>false</finalApproval>
+				</start>
+				<role name="InitialReview">
+					<qualifierResolverClass>org.kuali.rice.kew.role.NullQualifierResolver</qualifierResolverClass>
+					<activationType>S</activationType>
+				</role>
+				<role name="CommitteeReview">
+					<qualifierResolverClass>org.kuali.rice.kew.role.NullQualifierResolver</qualifierResolverClass>
+					<activationType>S</activationType>
+				</role>
+				<role name="DepartmentApproval">
+					<qualifierResolverClass>org.kuali.rice.kns.workflow.attribute.DataDictionaryQualifierResolver</qualifierResolverClass>
+					<activationType>P</activationType>
+				</role>
+				<split name="DecisionWithNotification">
+					<type>org.kuali.rice.krworkshop.WorkflowAttributeSplitNode</type>
+					<activationType>P</activationType>
+				</split>
+				<simple name="accepted">
+					<type>org.kuali.rice.kew.engine.node.NoOpNode</type>
+				</simple>
+				<simple name="provisional">
+					<type>org.kuali.rice.kew.engine.node.NoOpNode</type>
+				</simple>
+				<simple name="waitlisted">
+					<type>org.kuali.rice.kew.engine.node.NoOpNode</type>
+				</simple>
+				<simple name="rejected">
+					<type>org.kuali.rice.kew.engine.node.NoOpNode</type>
+				</simple>
+				<simple name="default">
+					<type>org.kuali.rice.kew.engine.node.NoOpNode</type>
+				</simple>
+			</routeNodes>     
+		</documentType>
+	</documentTypes>
+</data>
