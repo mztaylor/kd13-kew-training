@@ -27,13 +27,7 @@
 			<parent>RiceDocument</parent>
 			<docHandler>${krad.url}/maintenance?methodToCall=docHandler</docHandler>
 			<active>true</active>
-            <routingVersion>2</routingVersion>
-			<policies>
-				<policy>
-					<name>DEFAULT_APPROVE</name>
-					<value>true</value>
-				</policy>
-			</policies>
+
 			<routePaths>
 				<routePath>
 					<start name="AdHoc" nextNode="CommitteeReview" />

@@ -25,14 +25,9 @@
 			<description>Admissions Workflow Document</description>
 			<label>Admissions Workflow Document</label>
 			<parent>RiceDocument</parent>
-			<postProcessorName>org.kuali.rice.krad.workflow.postprocessor.KualiPostProcessor
-			</postProcessorName>
 			<docHandler>${krad.url}/maintenance?methodToCall=docHandler</docHandler>
-			<superUserGroupName namespace="KR-WKFLW">WorkflowAdmin
-			</superUserGroupName>
-			<blanketApproveGroupName namespace="KR-WKFLW">WorkflowAdmin
-			</blanketApproveGroupName>
 			<active>true</active>
+			
 			<validApplicationStatuses>
 				<status>Submitted</status>
 				<status>Under Review</status>
