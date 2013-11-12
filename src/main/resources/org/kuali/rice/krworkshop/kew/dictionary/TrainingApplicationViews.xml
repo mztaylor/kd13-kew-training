@@ -228,7 +228,7 @@
           <property name="headerText" value="Decision Status" />
           <property name="items">
             <list>
-              <bean parent="Uif-InputField" p:label="Decision Status" p:propertyName="decisionStatus"
+              <bean parent="Uif-InputField" p:label="Decision Status" p:propertyName="decisionStatus" p:defaultValue="IN"
                     p:required="@{document.documentHeader.workflowDocument.status.code != 'I'
                               and document.documentHeader.workflowDocument.status.code != 'S'}"
                     p:instructionalText="Please select the final decision for this application">
@@ -236,7 +236,7 @@
                   <bean parent="Uif-VerticalRadioControl">
                     <property name="options">
                       <list>
-                        <bean parent="Uif-KeyLabelPair" p:key=""   p:value="Unprocessed" />
+                        <bean parent="Uif-KeyLabelPair" p:key="IN" p:value="Initiated" />
                         <bean parent="Uif-KeyLabelPair" p:key="PN" p:value="Pending" />
                         <bean parent="Uif-KeyLabelPair" p:key="AF" p:value="Approved" />
                         <bean parent="Uif-KeyLabelPair" p:key="AP" p:value="Approved (Provisional)" />
