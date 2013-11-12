@@ -231,21 +231,22 @@
               <bean parent="Uif-InputField" p:label="Decision Status" p:propertyName="decisionStatus"
                     p:required="@{document.documentHeader.workflowDocument.status.code != 'I'
                               and document.documentHeader.workflowDocument.status.code != 'S'}"
-                    p:readOnly="@{document.documentHeader.workflowDocument.status.code != 'R'}"
                     p:instructionalText="Please select the final decision for this application">
                 <property name="control">
                   <bean parent="Uif-VerticalRadioControl">
                     <property name="options">
                       <list>
-                        <bean parent="Uif-KeyLabelPair" p:key="AF" p:value="Approve" />
-                        <bean parent="Uif-KeyLabelPair" p:key="AP" p:value="Approve (Provisional)" />
-                        <bean parent="Uif-KeyLabelPair" p:key="WL" p:value="Waitlist" />
-                        <bean parent="Uif-KeyLabelPair" p:key="RJ" p:value="Reject" />
+                        <bean parent="Uif-KeyLabelPair" p:key=""   p:value="Unprocessed" />
+                        <bean parent="Uif-KeyLabelPair" p:key="PN" p:value="Pending" />
+                        <bean parent="Uif-KeyLabelPair" p:key="AF" p:value="Approved" />
+                        <bean parent="Uif-KeyLabelPair" p:key="AP" p:value="Approved (Provisional)" />
+                        <bean parent="Uif-KeyLabelPair" p:key="WL" p:value="Waitlisted" />
+                        <bean parent="Uif-KeyLabelPair" p:key="RJ" p:value="Rejected" />
                       </list>
                     </property>
                   </bean>
                 </property>
-                <!-- KIM Exercise - uncomment componentSecurity -->
+                <!-- Exercise 1 - uncomment componentSecurity -->
                 <!--
                 <property name="componentSecurity.editAuthz" value="true"/>
                 -->
