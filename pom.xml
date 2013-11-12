@@ -80,6 +80,12 @@
 		<maven.failsafe.skip>true</maven.failsafe.skip>
 		<plugin.compiler.source>1.6</plugin.compiler.source>
 		<plugin.compiler.target>1.6</plugin.compiler.target>
+
+		<!-- training solutions -->
+		<training.db.solution.sql></training.db.solution.sql>		
+		<training.db.solution1.sql>src/main/config/db/training/${db.vendor}/solutions/001-solutions.sql</training.db.solution1.sql>
+		<training.db.solution2.sql>src/main/config/db/training/${db.vendor}/solutions/002-solutions.sql</training.db.solution2.sql>
+		<training.db.solution3.sql>src/main/config/db/training/${db.vendor}/solutions/003-solutions.sql</training.db.solution3.sql>
 	</properties>
 
 	<repositories>
@@ -292,6 +298,22 @@
 								</srcFiles>
 							</configuration>
 						</execution>
+						<execution>
+							<id>solution</id>
+							<phase>none</phase>
+							<goals>
+								<goal>execute</goal>
+							</goals>
+							<configuration>
+								<url>${impex.url}</url>
+								<username>${impex.username}</username>
+								<password>${impex.password}</password>
+								<srcFiles>
+									<srcFile>src/main/config/db/training/${db.vendor}/setup/000-rice-db-232.sql</srcFile>
+									<srcFile>${training.db.solution.sql}</srcFile>
+								</srcFiles>
+							</configuration>
+						</execution>
 					</executions>
 					<dependencies>
 						<dependency>
@@ -449,6 +471,56 @@
 						<executions>
 							<execution>
 								<id>update</id>
+								<phase>install</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+		<id>solution1</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<training.db.solution.sql>${training.db.solution1.sql}</training.db.solution.sql>		
+			</properties>
+		</profile>
+		<profile>
+		<id>solution2</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<training.db.solution.sql>${training.db.solution2.sql}</training.db.solution.sql>		
+			</properties>
+		</profile>
+		<profile>
+		<id>solution3</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<training.db.solution.sql>${training.db.solution3.sql}</training.db.solution.sql>		
+			</properties>
+		</profile>
+		<profile>
+			<id>solution</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<sql.plugin.force.execution>true</sql.plugin.force.execution>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.kuali.maven.plugins</groupId>
+						<artifactId>sql-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>solution</id>
 								<phase>install</phase>
 							</execution>
 						</executions>
