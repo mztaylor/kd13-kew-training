@@ -57,9 +57,6 @@ public class NamespaceRoleTypeServiceImpl extends RoleTypeServiceBase {
 	
 	/**
 	 * Check for entries that match the namespace.
-	 * 
-	 * By default, this method will return all exact matches if any exist, and it will only return partial matches if there are no exact matches.
-	 * i.e. KR-NS will have priority over KR-*
 	 */
 	@Override
 	protected boolean performMatch(Map<String, String> inputAttributes, Map<String, String> storedAttributes) {
