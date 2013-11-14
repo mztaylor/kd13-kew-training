@@ -86,6 +86,8 @@
 		<training.db.solution1.sql>src/main/config/db/training/${db.vendor}/solutions/001-solution.sql</training.db.solution1.sql>
 		<training.db.solution2.sql>src/main/config/db/training/${db.vendor}/solutions/002-solution.sql</training.db.solution2.sql>
 		<training.db.solution3.sql>src/main/config/db/training/${db.vendor}/solutions/003-solution.sql</training.db.solution3.sql>
+		<training.db.solution4.sql>src/main/config/db/training/${db.vendor}/solutions/004-solution.sql</training.db.solution4.sql>
+		<training.db.solution5.sql>src/main/config/db/training/${db.vendor}/solutions/005-solution.sql</training.db.solution5.sql>
 	</properties>
 
 	<repositories>
@@ -323,7 +325,6 @@
 								<username>${impex.username}</username>
 								<password>${impex.password}</password>
 								<srcFiles>
-									<srcFile>src/main/config/db/training/${db.vendor}/setup/000-rice-db-232.sql</srcFile>
 									<srcFile>${training.db.solution.sql}</srcFile>
 								</srcFiles>
 							</configuration>
@@ -583,6 +584,24 @@
 			</properties>
 		</profile>
 		<profile>
+		<id>solution4</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<training.db.solution.sql>${training.db.solution4.sql}</training.db.solution.sql>		
+			</properties>
+		</profile>
+		<profile>
+		<id>solution5</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<training.db.solution.sql>${training.db.solution5.sql}</training.db.solution.sql>		
+			</properties>
+		</profile>
+		<profile>
 			<id>solution</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
@@ -596,6 +615,14 @@
 						<groupId>org.kuali.maven.plugins</groupId>
 						<artifactId>sql-maven-plugin</artifactId>
 						<executions>
+							<execution>
+								<id>setup</id>
+								<phase>install</phase>
+							</execution>
+							<execution>
+								<id>setup-2</id>
+								<phase>install</phase>
+							</execution>
 							<execution>
 								<id>solution</id>
 								<phase>install</phase>

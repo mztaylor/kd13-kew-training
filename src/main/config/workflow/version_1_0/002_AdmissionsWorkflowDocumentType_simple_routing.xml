@@ -38,11 +38,9 @@
 			<routeNodes>
 				<start name="AdHoc" />
 				<role name="InitialReview">
-		            <qualifierResolverClass>org.kuali.rice.kew.role.NullQualifierResolver</qualifierResolverClass>
 					<activationType>S</activationType>
 				</role>
 				<role name="CommitteeReview">
-		            <qualifierResolverClass>org.kuali.rice.kew.role.NullQualifierResolver</qualifierResolverClass>
 					<activationType>S</activationType>
 				</role>
 			</routeNodes>     
