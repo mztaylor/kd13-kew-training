@@ -70,3 +70,5 @@ I'm getting 'Unable to update maven project - Unsupported IClasspathEntry kind=4
 - Right click -> Run as -> Maven 'eclipse:clean'
 - Right click -> Configure -> Enable Maven nature
 
+
+
