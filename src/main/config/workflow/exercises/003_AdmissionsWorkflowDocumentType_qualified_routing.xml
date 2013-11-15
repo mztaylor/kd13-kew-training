@@ -32,7 +32,8 @@
 				<routePath>
 					<start name="AdHoc" nextNode="InitialReview" />
 					<role name="InitialReview" nextNode="CommitteeReview" />
-                    <role name="CommitteeReview" />
+					<role name="CommitteeReview" />
+                    			<!-- Add DepartmentApproval node -->
 				</routePath>
 			</routePaths>
 			<routeNodes>
@@ -43,6 +44,7 @@
 				<role name="CommitteeReview">
 					<activationType>S</activationType>
 				</role>
+				<!-- Add DepartmentApproval node -->
 			</routeNodes>     
 
 		</documentType>
