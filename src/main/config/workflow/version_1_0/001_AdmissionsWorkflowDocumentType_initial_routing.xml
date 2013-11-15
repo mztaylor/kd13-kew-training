@@ -30,16 +30,12 @@
 
             <routePaths>
                 <routePath>
-                    <start name="Initiated" nextNode="InitialReview" />
+                    <start name="AdHoc" nextNode="InitialReview" />
                     <role name="InitialReview" />
                 </routePath>
             </routePaths>
             <routeNodes>
-                <start name="Initiated">
-                    <activationType>P</activationType>
-                    <mandatoryRoute>false</mandatoryRoute>
-                    <finalApproval>false</finalApproval>
-                </start>
+                <start name="AdHoc" />
                 <role name="InitialReview">
                     <activationType>S</activationType>
                 </role>
