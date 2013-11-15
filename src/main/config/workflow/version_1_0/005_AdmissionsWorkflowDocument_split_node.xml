@@ -102,6 +102,7 @@
 				<simple name="default">
 					<type>org.kuali.rice.kew.engine.node.NoOpNode</type>
 				</simple>
+				<join name="DecisionComplete" />
 			</routeNodes>     
 		</documentType>
 	</documentTypes>
