@@ -79,7 +79,7 @@
 				<bean parent="DocumentValuePathGroup">
 					<property name="documentValues">
 						<list>
-							<value>newMaintainableObject.businessObject.decisionStatus
+							<value>newMaintainableObject.dataObject.decisionStatus
 							</value>
 						</list>
 					</property>
