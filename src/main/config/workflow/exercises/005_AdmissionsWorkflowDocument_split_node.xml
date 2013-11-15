@@ -35,10 +35,6 @@
 			</validApplicationStatuses>
 			<policies>
 				<policy>
-					<name>DEFAULT_APPROVE</name>
-					<value>false</value>
-				</policy>
-				<policy>
 					<name>DOCUMENT_STATUS_POLICY</name>
 					<stringValue>BOTH</stringValue>
 				</policy>
