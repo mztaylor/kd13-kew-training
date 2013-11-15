@@ -32,6 +32,7 @@
 				<status>Under Review</status>
 				<status>Awaiting Decision</status>
 				<status>Decision Complete</status>
+				<!-- add new statuses for final decisions -->
 			</validApplicationStatuses>
 			<policies>
 				<policy>
@@ -45,6 +46,8 @@
 					<role name="InitialReview" nextNode="CommitteeReview" nextAppDocStatus="Under Review" />
 					<role name="CommitteeReview" nextNode="DepartmentApproval" nextAppDocStatus="Awaiting Decision" />
 					<role name="DepartmentApproval" nextAppDocStatus="Decision Complete" />
+					<!-- add split node, join node, and branches for DecisionWithNotification -->
+					<!-- include all corresponding nextAppDocStatus attributes -->
 				</routePath>
 			</routePaths>
 			<routeNodes>
@@ -59,6 +62,7 @@
 					<qualifierResolverClass>org.kuali.rice.kns.workflow.attribute.DataDictionaryQualifierResolver</qualifierResolverClass>
 					<activationType>P</activationType>
 				</role>
+				<!-- add corresponding split, simple, and join nodes  -->
 			</routeNodes>     
 		</documentType>
 	</documentTypes>
