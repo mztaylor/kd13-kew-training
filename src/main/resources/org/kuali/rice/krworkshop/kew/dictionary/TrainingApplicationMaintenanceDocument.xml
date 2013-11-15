@@ -32,6 +32,40 @@
         <value>id</value>
       </list>
     </property>
+    <property name="workflowAttributes">
+		<bean parent="WorkflowAttributes">
+			<property name="routingTypeDefinitions">
+				<map>
+					<entry key="SomeRouteNodeName">
+					
+					
+						<bean parent="RoutingTypeDefinition">
+					    	<property name="routingAttributes">
+					    		<list>
+					    			<bean parent="RoutingAttribute" p:qualificationAttributeName="attributeOneForWorkflow" />
+					    			<bean parent="RoutingAttribute" p:qualificationAttributeName="attributeTwoForWorkflow" />
+					    		</list>
+					    	</property>
+					    	<property name="documentValuePathGroups">
+					    		<list>
+					    			<bean parent="DocumentValuePathGroup">
+										<property name="documentValues">
+									   		<list>
+									   			<value>object path within document for attributeOne</value>
+									   			<value>object path within document for attributeTwo</value>
+									   		</list>
+								   		</property>
+								   	</bean>
+					    		</list>
+					    	</property>					
+						</bean>
+						
+						
+					</entry>
+				</map>
+			</property>
+		</bean>
+    </property>
   </bean>
 
 </beans>
