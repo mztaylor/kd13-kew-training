@@ -32,6 +32,7 @@
                 <routePath>
                     <start name="AdHoc" nextNode="InitialReview" />
                     <role name="InitialReview" />
+                    <!-- add role to routePath for CommitteeReview -->
                 </routePath>
             </routePaths>
             <routeNodes>
@@ -39,6 +40,7 @@
                 <role name="InitialReview">
                     <activationType>S</activationType>
                 </role>
+                <!-- add role node to routeNodes for CommitteeReview -->
             </routeNodes>
 
 		</documentType>
