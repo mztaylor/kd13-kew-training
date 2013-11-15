@@ -67,5 +67,24 @@
 		</bean>
     </property>
   </bean>
-
+  <!-- Used as part of exercise 5  -->
+  <bean id="DecisionWithNotificationDefinition" parent="RoutingTypeDefinition">
+		<property name="routingAttributes">
+			<list>
+				<bean parent="RoutingAttribute" p:qualificationAttributeName="splitNodeAttribute" />
+			</list>
+		</property>
+		<property name="documentValuePathGroups">
+			<list>
+				<bean parent="DocumentValuePathGroup">
+					<property name="documentValues">
+						<list>
+							<value>newMaintainableObject.businessObject.decisionStatus
+							</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+  </bean>
 </beans>
