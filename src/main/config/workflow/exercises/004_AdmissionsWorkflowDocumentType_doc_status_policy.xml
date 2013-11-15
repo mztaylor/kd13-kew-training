@@ -27,9 +27,11 @@
 			<parent>RiceDocument</parent>
 			<docHandler>${krad.url}/maintenance?methodToCall=docHandler</docHandler>
 			<active>true</active>
-
+			<!-- add policies tag and document status policy element set to BOTH -->
+			<!-- add validApplicationStatus tags for Admission Statuses -->
 			<routePaths>
 				<routePath>
+					<!-- update nodes to include nextAppDocStatus attribute -->
 					<start name="AdHoc" nextNode="InitialReview" />
 					<role name="InitialReview" nextNode="CommitteeReview" />
 					<role name="CommitteeReview" nextNode="DepartmentApproval" />
@@ -45,8 +47,8 @@
 					<activationType>S</activationType>
 				</role>
 				<role name="DepartmentApproval">
-		            <qualifierResolverClass>org.kuali.rice.kns.workflow.attribute.DataDictionaryQualifierResolver</qualifierResolverClass>
-		            <activationType>P</activationType>
+					<qualifierResolverClass>org.kuali.rice.kns.workflow.attribute.DataDictionaryQualifierResolver</qualifierResolverClass>
+					<activationType>P</activationType>
 				</role>
 			</routeNodes>     
 
