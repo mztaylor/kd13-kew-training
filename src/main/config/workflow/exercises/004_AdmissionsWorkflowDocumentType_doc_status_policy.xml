@@ -32,7 +32,7 @@
 				<routePath>
 					<start name="AdHoc" nextNode="InitialReview" />
 					<role name="InitialReview" nextNode="CommitteeReview" />
-                    <role name="CommitteeReview" nextNode="DepartmentApproval" />
+					<role name="CommitteeReview" nextNode="DepartmentApproval" />
 					<role name="DepartmentApproval" /> 
 				</routePath>
 			</routePaths>
