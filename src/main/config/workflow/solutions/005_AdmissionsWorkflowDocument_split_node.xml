@@ -84,7 +84,7 @@
 					<activationType>P</activationType>
 				</role>
 				<split name="DecisionWithNotification">
-					<type>org.kuali.rice.krworkshop.WorkflowAttributeSplitNode</type>
+					<type>org.kuali.rice.krworkshop.RoutingAttributeSplitNode</type>
 					<activationType>P</activationType>
 				</split>
 				<simple name="accepted">
